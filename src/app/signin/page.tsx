@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 import { FaUserCircle, FaLock } from 'react-icons/fa';
 
 export default function SignIn() {
@@ -28,6 +29,13 @@ export default function SignIn() {
       // Store authentication state in localStorage
       localStorage.setItem('isSignedIn', 'true');
       localStorage.setItem('userEmail', email);
+      
+      // Also store in cookies for middleware
+      setCookie('isSignedIn', 'true', { maxAge: 60 * 60 * 24 * 7 }); // 7 days
+      setCookie('userEmail', email, { maxAge: 60 * 60 * 24 * 7 });
+      
+      // Trigger a storage event to update other components
+      window.dispatchEvent(new Event('storage'));
       
       // No actual authentication, just redirect to home
       router.push('/');
@@ -135,4 +143,4 @@ export default function SignIn() {
       </div>
     </div>
   );
-} 
+}

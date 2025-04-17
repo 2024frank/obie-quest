@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { deleteCookie } from 'cookies-next';
 import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaUtensils, FaCalendarAlt, FaUsers, FaCheckSquare, FaChevronDown } from 'react-icons/fa';
 
 export default function Navbar() {
@@ -57,12 +58,18 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = () => {
+    // Remove from localStorage
     localStorage.removeItem('isSignedIn');
     localStorage.removeItem('isGuest');
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userYear');
     localStorage.removeItem('userMajor');
+    
+    // Also remove cookies for middleware
+    deleteCookie('isSignedIn');
+    deleteCookie('userEmail');
+    
     setIsSignedIn(false);
     router.push('/signin');
   };
@@ -89,11 +96,13 @@ export default function Navbar() {
                 aria-label="Main menu"
               >
                 <span className="font-bold text-2xl">ObieQuest</span>
-                <FaChevronDown className={`transition-transform ml-1 ${isDesktopDropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                {isClient && isSignedIn && (
+                  <FaChevronDown className={`transition-transform ml-1 ${isDesktopDropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                )}
               </button>
               
-              {/* Desktop dropdown menu */}
-              {isDesktopDropdownOpen && (
+              {/* Desktop dropdown menu - Only shown when signed in */}
+              {isClient && isSignedIn && isDesktopDropdownOpen && (
                 <div 
                   id="desktop-menu"
                   className="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 hidden md:block"
@@ -159,19 +168,21 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <div className="hidden md:flex items-center space-x-2">
-              <Image 
-                src="/OberlinCollege-logo.png" 
-                alt="Oberlin College Logo" 
-                width={36} 
-                height={36}
-                className="rounded-sm"
-              />
-              <span className="text-base font-light">Oberlin College and Conservatory</span>
-            </div>
+            {isClient && (
+              <div className="hidden md:flex items-center space-x-2">
+                <Image 
+                  src="/OberlinCollege-logo.png" 
+                  alt="Oberlin College Logo" 
+                  width={36} 
+                  height={36}
+                  className="rounded-sm"
+                />
+                <span className="text-base font-light">Oberlin College and Conservatory</span>
+              </div>
+            )}
           </div>
           
-          {/* Authentication Links - Only show user info when signed in */}
+          {/* Authentication Links - Different options for signed in vs not signed in */}
           {isClient && isSignedIn && (
             <div className="hidden md:flex items-center space-x-2">
               <Link 
@@ -213,25 +224,27 @@ export default function Navbar() {
               </>
             ) : null}
             
-            {/* Mobile menu button */}
-            <button 
-              type="button" 
-              onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-3 rounded-md text-white hover:bg-red-800 focus:outline-none"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            >
-              <svg className="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Mobile menu button - Only show for signed in users */}
+            {isClient && isSignedIn && (
+              <button 
+                type="button" 
+                onClick={toggleMobileMenu}
+                className="inline-flex items-center justify-center p-3 rounded-md text-white hover:bg-red-800 focus:outline-none"
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              >
+                <svg className="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on mobile menu state */}
-      {isMobileMenuOpen && (
+      {/* Mobile menu, show/hide based on mobile menu state - Only for signed in users */}
+      {isClient && isSignedIn && isMobileMenuOpen && (
         <div id="mobile-menu" className="md:hidden bg-red-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link 
