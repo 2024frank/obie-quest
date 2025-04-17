@@ -45,7 +45,7 @@ export default function Home() {
             <FaGraduationCap className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">Academic Resources</h2>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-800 text-center font-medium">
             Discover libraries, study spaces, tutoring, and more
           </p>
         </Link>
@@ -58,7 +58,7 @@ export default function Home() {
             <FaUtensils className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">Dining Options</h2>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-800 text-center font-medium">
             Find dining halls, cafes, and restaurants on campus and downtown
           </p>
         </Link>
@@ -71,7 +71,7 @@ export default function Home() {
             <FaCalendarAlt className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">Campus Events</h2>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-800 text-center font-medium">
             Stay updated on lectures, performances, club activities, and more
           </p>
         </Link>
@@ -84,7 +84,7 @@ export default function Home() {
             <FaCheckSquare className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">My Oberlin Checklist</h2>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-800 text-center font-medium">
             Track your personalized 4-year Oberlin College experience
           </p>
         </Link>

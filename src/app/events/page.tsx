@@ -6,7 +6,7 @@ export default function EventsPage() {
     <div className="space-y-8">
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Campus Events</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
           Stay updated on lectures, performances, club activities, and more happening at Oberlin.
         </p>
       </header>
@@ -27,28 +27,28 @@ export default function EventsPage() {
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-1">Oberlin Orchestra Concert</h3>
             <p className="text-sm text-gray-500 mb-2">Friday, Oct 15 • 8:00 PM • Finney Chapel</p>
-            <p className="text-gray-600 mb-2">The Oberlin Orchestra performs works by Beethoven, Brahms, and contemporary composers.</p>
+            <p className="text-gray-800 mb-2 font-medium">The Oberlin Orchestra performs works by Beethoven, Brahms, and contemporary composers.</p>
             <p className="text-sm text-red-700 hover:underline cursor-pointer">Add to My Calendar</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-1">Environmental Justice Panel</h3>
             <p className="text-sm text-gray-500 mb-2">Monday, Oct 18 • 4:30 PM • Nancy Schrom Dye Lecture Hall</p>
-            <p className="text-gray-600 mb-2">Panel discussion with environmental activists and scholars discussing local and global issues.</p>
+            <p className="text-gray-800 mb-2 font-medium">Panel discussion with environmental activists and scholars discussing local and global issues.</p>
             <p className="text-sm text-red-700 hover:underline cursor-pointer">Add to My Calendar</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-1">Observatory Open House</h3>
             <p className="text-sm text-gray-500 mb-2">Wednesday, Oct 20 • 9:00 PM • Peters Hall Observatory</p>
-            <p className="text-gray-600 mb-2">View the night sky through Oberlin&apos;s telescopes with guidance from astronomy faculty.</p>
+            <p className="text-gray-800 mb-2 font-medium">View the night sky through Oberlin&apos;s telescopes with guidance from astronomy faculty.</p>
             <p className="text-sm text-red-700 hover:underline cursor-pointer">Add to My Calendar</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-1">Fall Break Begins</h3>
             <p className="text-sm text-gray-500 mb-2">Saturday, Oct 23 • All Day</p>
-            <p className="text-gray-600 mb-2">No classes from October 23-31. Residence halls remain open. Some facilities have limited hours.</p>
+            <p className="text-gray-800 mb-2 font-medium">No classes from October 23-31. Residence halls remain open. Some facilities have limited hours.</p>
             <p className="text-sm text-red-700 hover:underline cursor-pointer">Add to My Calendar</p>
           </div>
         </div>

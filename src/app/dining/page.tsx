@@ -5,7 +5,7 @@ export default function DiningPage() {
     <div className="space-y-10">
       <header className="text-center mb-14">
         <h1 className="text-4xl font-bold text-gray-800 mb-5">Dining Options</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
           Explore dining halls, cafes, and restaurants on campus and in downtown Oberlin.
         </p>
       </header>

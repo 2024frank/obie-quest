@@ -5,8 +5,8 @@ export default function AcademicPage() {
     <div className="space-y-8">
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Academic Resources</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Discover Oberlin&apos;s libraries, study spaces, support services, and more to help you succeed academically.
+        <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
+          Discover libraries, study spaces, tutoring services, and other academic resources at Oberlin.
         </p>
       </header>
       
