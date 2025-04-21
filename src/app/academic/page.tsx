@@ -19,29 +19,29 @@ export default function AcademicPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Mudd Center</h3>
-            <p className="text-gray-600 mb-2">Main library with extensive collections, study spaces, and technology resources.</p>
-            <p className="text-sm">
+            <p className="text-gray-700 mb-2">Main library with extensive collections, study spaces, and technology resources.</p>
+            <p className="text-sm text-gray-700">
               <strong>Hours:</strong> Mon-Thu 8am-2am, Fri 8am-10pm, Sat 10am-10pm, Sun 10am-2am
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Conservatory Library</h3>
-            <p className="text-gray-600 mb-2">Houses music collections, scores, recordings, and practice rooms.</p>
-            <p className="text-sm">
+            <p className="text-gray-700 mb-2">Houses music collections, scores, recordings, and practice rooms.</p>
+            <p className="text-sm text-gray-700">
               <strong>Hours:</strong> Mon-Fri 9am-9pm, Sat-Sun 12pm-5pm
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Science Library</h3>
-            <p className="text-gray-600 mb-2">Resources for natural sciences, mathematics, and psychology.</p>
-            <p className="text-sm">
+            <p className="text-gray-700 mb-2">Resources for natural sciences, mathematics, and psychology.</p>
+            <p className="text-sm text-gray-700">
               <strong>Hours:</strong> Mon-Thu 8am-10pm, Fri 8am-6pm, Sat 12pm-6pm, Sun 12pm-10pm
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Art Library</h3>
-            <p className="text-gray-600 mb-2">Resources for visual arts, art history, and architecture.</p>
-            <p className="text-sm">
+            <p className="text-gray-700 mb-2">Resources for visual arts, art history, and architecture.</p>
+            <p className="text-sm text-gray-700">
               <strong>Hours:</strong> Mon-Fri 10am-5pm, Sat-Sun Closed
             </p>
           </div>
@@ -57,18 +57,18 @@ export default function AcademicPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Wilder Hall</h3>
-            <p className="text-gray-600 mb-2">Comfortable seating areas and quiet study lounges.</p>
-            <p className="text-sm"><strong>Features:</strong> Wi-Fi, Comfortable Seating, Cafe Nearby</p>
+            <p className="text-gray-700 mb-2">Comfortable seating areas and quiet study lounges.</p>
+            <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Comfortable Seating, Cafe Nearby</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">King Building</h3>
-            <p className="text-gray-600 mb-2">Modern classrooms and study areas for individual and group work.</p>
-            <p className="text-sm"><strong>Features:</strong> Wi-Fi, Group Study Rooms, Computer Lab</p>
+            <p className="text-gray-700 mb-2">Modern classrooms and study areas for individual and group work.</p>
+            <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Group Study Rooms, Computer Lab</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Science Center</h3>
-            <p className="text-gray-600 mb-2">Dedicated study spaces for science students with specialized equipment.</p>
-            <p className="text-sm"><strong>Features:</strong> Wi-Fi, Lab Access, Quiet Study Areas</p>
+            <p className="text-gray-700 mb-2">Dedicated study spaces for science students with specialized equipment.</p>
+            <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Lab Access, Quiet Study Areas</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Residence Hall Common Areas</h3>

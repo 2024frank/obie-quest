@@ -64,30 +64,30 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Conservatory Concerts</h3>
-            <p className="text-gray-600 mb-2">Regular performances by Oberlin Conservatory students and faculty.</p>
-            <p className="text-sm"><strong>Venues:</strong> Warner Concert Hall, Kulas Recital Hall, Finney Chapel</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Many performances are free; check the Conservatory calendar</p>
+            <p className="text-gray-700 mb-2">Regular performances by Oberlin Conservatory students and faculty.</p>
+            <p className="text-sm text-gray-700"><strong>Venues:</strong> Warner Concert Hall, Kulas Recital Hall, Finney Chapel</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Many performances are free; check the Conservatory calendar</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Artist Recital Series</h3>
-            <p className="text-gray-600 mb-2">World-renowned artists and ensembles performing at Oberlin.</p>
-            <p className="text-sm"><strong>Venue:</strong> Finney Chapel</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Tickets available at Central Ticket Service</p>
+            <p className="text-gray-700 mb-2">World-renowned artists and ensembles performing at Oberlin.</p>
+            <p className="text-sm text-gray-700"><strong>Venue:</strong> Finney Chapel</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Tickets available at Central Ticket Service</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Student Bands & Performances</h3>
-            <p className="text-gray-600 mb-2">Showcases of student musical groups from various genres.</p>
-            <p className="text-sm"><strong>Venues:</strong> Cat in the Cream, &apos;Sco, Dionysus Club</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Varies by event, many are free or low-cost</p>
+            <p className="text-gray-700 mb-2">Showcases of student musical groups from various genres.</p>
+            <p className="text-sm text-gray-700"><strong>Venues:</strong> Cat in the Cream, &apos;Sco, Dionysus Club</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Varies by event, many are free or low-cost</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Dance Performances</h3>
-            <p className="text-gray-600 mb-2">Showcases of choreography and dance by students and visiting artists.</p>
-            <p className="text-sm"><strong>Venue:</strong> Warner Center for the Performing Arts</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Available through Central Ticket Service</p>
+            <p className="text-gray-700 mb-2">Showcases of choreography and dance by students and visiting artists.</p>
+            <p className="text-sm text-gray-700"><strong>Venue:</strong> Warner Center for the Performing Arts</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Available through Central Ticket Service</p>
           </div>
         </div>
       </section>
@@ -102,30 +102,30 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Theater Department Productions</h3>
-            <p className="text-gray-600 mb-2">Main stage productions by the Theater Department, featuring student actors and designers.</p>
-            <p className="text-sm"><strong>Venues:</strong> Hall Auditorium, Little Theater</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Central Ticket Service</p>
+            <p className="text-gray-700 mb-2">Main stage productions by the Theater Department, featuring student actors and designers.</p>
+            <p className="text-sm text-gray-700"><strong>Venues:</strong> Hall Auditorium, Little Theater</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Central Ticket Service</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Student Theater Productions</h3>
-            <p className="text-gray-600 mb-2">Independent productions by student theater groups.</p>
-            <p className="text-sm"><strong>Venues:</strong> Little Theater, Kander Theater</p>
-            <p className="text-sm"><strong>Groups:</strong> Oberlin Student Theater Association, Oberlin Musical Theater Association</p>
+            <p className="text-gray-700 mb-2">Independent productions by student theater groups.</p>
+            <p className="text-sm text-gray-700"><strong>Venues:</strong> Little Theater, Kander Theater</p>
+            <p className="text-sm text-gray-700"><strong>Groups:</strong> Oberlin Student Theater Association, Oberlin Musical Theater Association</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Art Exhibitions</h3>
-            <p className="text-gray-600 mb-2">Rotating exhibitions at the Allen Memorial Art Museum and student galleries.</p>
-            <p className="text-sm"><strong>Venues:</strong> Allen Memorial Art Museum, Fisher Gallery</p>
-            <p className="text-sm"><strong>Hours:</strong> Varies by venue, check museum website</p>
+            <p className="text-gray-700 mb-2">Rotating exhibitions at the Allen Memorial Art Museum and student galleries.</p>
+            <p className="text-sm text-gray-700"><strong>Venues:</strong> Allen Memorial Art Museum, Fisher Gallery</p>
+            <p className="text-sm text-gray-700"><strong>Hours:</strong> Varies by venue, check museum website</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Cinema Studies Screenings</h3>
-            <p className="text-gray-600 mb-2">Film screenings and discussions by the Cinema Studies program.</p>
-            <p className="text-sm"><strong>Venue:</strong> Apollo Theatre, classroom venues</p>
-            <p className="text-sm"><strong>Ticket Info:</strong> Many screenings are free</p>
+            <p className="text-gray-700 mb-2">Film screenings and discussions by the Cinema Studies program.</p>
+            <p className="text-sm text-gray-700"><strong>Venue:</strong> Apollo Theatre, classroom venues</p>
+            <p className="text-sm text-gray-700"><strong>Ticket Info:</strong> Many screenings are free</p>
           </div>
         </div>
       </section>
@@ -145,26 +145,26 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Cultural Organizations</h3>
-            <p className="text-gray-600 mb-2">Groups celebrating diverse cultures and traditions through events and activities.</p>
-            <p className="text-sm"><strong>Examples:</strong> Asian American Alliance, La Alianza Latinx, African Students Association</p>
+            <p className="text-gray-700 mb-2">Groups celebrating diverse cultures and traditions through events and activities.</p>
+            <p className="text-sm text-gray-700"><strong>Examples:</strong> Asian American Alliance, La Alianza Latinx, African Students Association</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Activism & Service</h3>
-            <p className="text-gray-600 mb-2">Organizations focused on social justice, community service, and political action.</p>
-            <p className="text-sm"><strong>Examples:</strong> Oberlin Student Progressive Alliance, Environmental Action</p>
+            <p className="text-gray-700 mb-2">Organizations focused on social justice, community service, and political action.</p>
+            <p className="text-sm text-gray-700"><strong>Examples:</strong> Oberlin Student Progressive Alliance, Environmental Action</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Performing Arts Groups</h3>
-            <p className="text-gray-600 mb-2">Student-led music, dance, and theater groups that host regular performances.</p>
-            <p className="text-sm"><strong>Examples:</strong> OSteel, Oberlin College Choir, OCircus</p>
+            <p className="text-gray-700 mb-2">Student-led music, dance, and theater groups that host regular performances.</p>
+            <p className="text-sm text-gray-700"><strong>Examples:</strong> OSteel, Oberlin College Choir, OCircus</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Recreational & Special Interest</h3>
-            <p className="text-gray-600 mb-2">Clubs based on hobbies, interests, and recreational activities.</p>
-            <p className="text-sm"><strong>Examples:</strong> Gaming Club, Anime Club, Chess Club</p>
+            <p className="text-gray-700 mb-2">Clubs based on hobbies, interests, and recreational activities.</p>
+            <p className="text-sm text-gray-700"><strong>Examples:</strong> Gaming Club, Anime Club, Chess Club</p>
           </div>
         </div>
       </section>
@@ -179,9 +179,9 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Convocation Series</h3>
-            <p className="text-gray-600 mb-2">Distinguished speakers from various fields addressing the Oberlin community.</p>
-            <p className="text-sm"><strong>Venue:</strong> Finney Chapel</p>
-            <p className="text-sm"><strong>Schedule:</strong> Monthly during academic year</p>
+            <p className="text-gray-700 mb-2">Distinguished speakers from various fields addressing the Oberlin community.</p>
+            <p className="text-sm text-gray-700"><strong>Venue:</strong> Finney Chapel</p>
+            <p className="text-sm text-gray-700"><strong>Schedule:</strong> Monthly during academic year</p>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
