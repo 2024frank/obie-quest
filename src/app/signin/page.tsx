@@ -44,21 +44,21 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[80vh]">
-      <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-xl w-full max-w-md">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-800 mb-3">Welcome to ObieQuest</h1>
-          <p className="text-xl text-gray-700">Sign in to your account</p>
+    <div className="flex items-center justify-center min-h-[80vh] px-4 py-6 sm:px-6">
+      <div className="bg-white bg-opacity-90 p-5 sm:p-8 rounded-xl shadow-xl w-full max-w-md">
+        <div className="text-center mb-6 sm:mb-10">
+          <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2 sm:mb-3">Welcome to ObieQuest</h1>
+          <p className="text-lg sm:text-xl text-gray-700">Sign in to your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8" aria-labelledby="signin-heading">
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8" aria-labelledby="signin-heading">
           <div>
-            <label htmlFor="email" className="block text-lg font-medium text-gray-800 mb-2">
+            <label htmlFor="email" className="block text-base sm:text-lg font-medium text-gray-800 mb-1 sm:mb-2">
               Email Address
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaUserCircle className="text-gray-500 text-xl" aria-hidden="true" />
+                <FaUserCircle className="text-gray-500 text-lg sm:text-xl" aria-hidden="true" />
               </div>
               <input
                 id="email"
@@ -68,7 +68,7 @@ export default function SignIn() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-3 text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                className="pl-10 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder=""
                 aria-required="true"
               />
@@ -76,12 +76,12 @@ export default function SignIn() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-lg font-medium text-gray-800 mb-2">
+            <label htmlFor="password" className="block text-base sm:text-lg font-medium text-gray-800 mb-1 sm:mb-2">
               Password
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaLock className="text-gray-500 text-xl" aria-hidden="true" />
+                <FaLock className="text-gray-500 text-lg sm:text-xl" aria-hidden="true" />
               </div>
               <input
                 id="password"
@@ -91,28 +91,28 @@ export default function SignIn() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-3 text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                className="pl-10 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder=""
                 aria-required="true"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
             <div className="flex items-center">
               <input
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-5 w-5 text-red-600 focus:ring-red-600 border-gray-300 rounded"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-red-600 focus:ring-red-600 border-gray-300 rounded"
                 aria-labelledby="remember-label"
               />
-              <label id="remember-label" htmlFor="remember-me" className="ml-2 block text-lg text-gray-700">
+              <label id="remember-label" htmlFor="remember-me" className="ml-2 block text-base sm:text-lg text-gray-700">
                 Remember me
               </label>
             </div>
 
-            <div className="text-base">
+            <div className="text-sm sm:text-base">
               <a href="#" className="font-medium text-red-600 hover:text-red-500 underline">
                 Forgot your password?
               </a>
@@ -123,7 +123,7 @@ export default function SignIn() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 ${
+              className={`w-full flex justify-center py-2 sm:py-3 px-4 border border-transparent rounded-lg shadow-sm text-base sm:text-lg font-medium text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
               aria-busy={loading}
@@ -134,7 +134,7 @@ export default function SignIn() {
           </div>
         </form>
 
-        <p className="mt-8 text-center text-lg text-gray-700">
+        <p className="mt-6 sm:mt-8 text-center text-base sm:text-lg text-gray-700">
           Don&apos;t have an account?{' '}
           <Link href="/signup" className="font-medium text-red-600 hover:text-red-500 underline">
             Sign up

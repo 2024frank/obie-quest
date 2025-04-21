@@ -47,14 +47,14 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[80vh]">
-      <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Join ObieQuest</h1>
-          <p className="text-gray-600">Create your account</p>
+    <div className="flex items-center justify-center min-h-[80vh] px-4 py-6 sm:px-6">
+      <div className="bg-white p-5 sm:p-8 rounded-xl shadow-xl w-full max-w-md">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1 sm:mb-2">Join ObieQuest</h1>
+          <p className="text-sm sm:text-base text-gray-600">Create your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
               Full Name
@@ -71,7 +71,7 @@ export default function SignUp() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
+                className="pl-10 w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder=""
               />
             </div>
@@ -93,7 +93,7 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
+                className="pl-10 w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder=""
               />
             </div>
@@ -115,17 +115,17 @@ export default function SignUp() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
+                className="pl-10 w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder=""
               />
             </div>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-1 sm:pt-2">
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ${
+              className={`w-full flex justify-center py-2 sm:py-3 px-4 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >
@@ -134,7 +134,7 @@ export default function SignUp() {
           </div>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-5 sm:mt-6 text-center text-xs sm:text-sm text-gray-600">
           Already have an account?{' '}
           <Link href="/signin" className="font-medium text-red-600 hover:text-red-500">
             Sign in
