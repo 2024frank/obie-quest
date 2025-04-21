@@ -21,28 +21,40 @@ export default function AcademicPage() {
             <h3 className="font-medium text-lg mb-2 text-gray-800">Mudd Center</h3>
             <p className="text-gray-700 mb-2">Main library with extensive collections, study spaces, and technology resources.</p>
             <p className="text-sm text-gray-700">
-              <strong>Hours:</strong> Mon-Thu 8am-2am, Fri 8am-10pm, Sat 10am-10pm, Sun 10am-2am
+              <strong>Address:</strong> 148 W College St, Oberlin, OH 44074
+            </p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://libraries.oberlin.edu/libraries/mary-church-terrell" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://libraries.oberlin.edu/libraries/mary-church-terrell</a>
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Conservatory Library</h3>
             <p className="text-gray-700 mb-2">Houses music collections, scores, recordings, and practice rooms.</p>
             <p className="text-sm text-gray-700">
-              <strong>Hours:</strong> Mon-Fri 9am-9pm, Sat-Sun 12pm-5pm
+              <strong>Address:</strong> 77 W College St, Oberlin, OH 44074
+            </p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://www.oberlin.edu/conservatory" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.oberlin.edu/conservatory</a>
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Science Library</h3>
             <p className="text-gray-700 mb-2">Resources for natural sciences, mathematics, and psychology.</p>
             <p className="text-sm text-gray-700">
-              <strong>Hours:</strong> Mon-Thu 8am-10pm, Fri 8am-6pm, Sat 12pm-6pm, Sun 12pm-10pm
+              <strong>Address:</strong> 119 Woodland St, Oberlin, OH 44074
+            </p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://libraries.oberlin.edu/libraries/science-library" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://libraries.oberlin.edu/libraries/science-library</a>
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="font-medium text-lg mb-2 text-gray-800">Art Library</h3>
+            <h3 className="font-medium text-lg mb-2 text-gray-800">Arts Library</h3>
             <p className="text-gray-700 mb-2">Resources for visual arts, art history, and architecture.</p>
             <p className="text-sm text-gray-700">
-              <strong>Hours:</strong> Mon-Fri 10am-5pm, Sat-Sun Closed
+              <strong>Address:</strong> 83 N Main St, Oberlin, OH 44074
+            </p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://libraries.oberlin.edu/libraries/clarence-ward-art-library" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://libraries.oberlin.edu/libraries/clarence-ward-art-library</a>
             </p>
           </div>
         </div>
@@ -58,16 +70,19 @@ export default function AcademicPage() {
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Wilder Hall</h3>
             <p className="text-gray-700 mb-2">Comfortable seating areas and quiet study lounges.</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> 135 W Lorain St, Oberlin, OH 44074</p>
             <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Comfortable Seating, Cafe Nearby</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">King Building</h3>
             <p className="text-gray-700 mb-2">Modern classrooms and study areas for individual and group work.</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> King Bldg, 10 N Professor St, Oberlin, OH 44074</p>
             <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Group Study Rooms, Computer Lab</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Science Center</h3>
             <p className="text-gray-700 mb-2">Dedicated study spaces for science students with specialized equipment.</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> 119 Woodland St, Oberlin, OH 44074</p>
             <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, Lab Access, Quiet Study Areas</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
@@ -88,12 +103,11 @@ export default function AcademicPage() {
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Writing Center</h3>
             <p className="text-gray-700 mb-2">One-on-one writing support for all courses and disciplines.</p>
-            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Center, Floor 2</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Center, Floor 1</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Quantitative Skills Center</h3>
             <p className="text-gray-700 mb-2">Support for mathematics, statistics, and quantitative reasoning.</p>
-            <p className="text-sm text-gray-700"><strong>Location:</strong> King Building, Room 105</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Peer Tutoring</h3>
@@ -103,7 +117,6 @@ export default function AcademicPage() {
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Academic Advising</h3>
             <p className="text-gray-700 mb-2">Guidance on course selection, major requirements, and academic planning.</p>
-            <p className="text-sm text-gray-700"><strong>Location:</strong> Peters Hall, Room 202</p>
           </div>
         </div>
       </section>
@@ -118,17 +131,20 @@ export default function AcademicPage() {
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Career Development Center</h3>
             <p className="text-gray-700 mb-2">Resources for internships, career planning, and job applications.</p>
-            <p className="text-sm text-gray-700"><strong>Location:</strong> Stevenson Hall</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Basement</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> 148 W College St, Oberlin, OH 44074</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Winter Term</h3>
             <p className="text-gray-700 mb-2">Information on January term projects, internships, and research opportunities.</p>
-            <p className="text-sm text-gray-700"><strong>Contact:</strong> Winter Term Office, Peters Hall</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Basement</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> 148 W College St, Oberlin, OH 44074</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Study Abroad</h3>
             <p className="text-gray-700 mb-2">Resources for international education opportunities.</p>
-            <p className="text-sm text-gray-700"><strong>Location:</strong> Peters Hall, Room 205</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Basement</p>
+            <p className="text-sm text-gray-700"><strong>Address:</strong> 148 W College St, Oberlin, OH 44074</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Undergraduate Research</h3>
@@ -146,20 +162,25 @@ export default function AcademicPage() {
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="font-medium text-lg mb-2 text-gray-800">PRESTO</h3>
+            <h3 className="font-medium text-lg mb-2 text-gray-800">Oberview</h3>
             <p className="text-gray-700 mb-2">Oberlin&apos;s student information system for course registration, grades, and academic records.</p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://oberview.oberlin.edu/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://oberview.oberlin.edu/</a>
+            </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Blackboard</h3>
             <p className="text-gray-700 mb-2">Course management system for assignments, readings, and communications.</p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://blackboard.oberlin.edu/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://blackboard.oberlin.edu/</a>
+            </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Library Databases</h3>
             <p className="text-gray-700 mb-2">Online access to journals, books, and research materials.</p>
-          </div>
-          <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="font-medium text-lg mb-2 text-gray-800">Oberlin Mobile App</h3>
-            <p className="text-gray-700 mb-2">Access to campus resources, events, and information on the go.</p>
+            <p className="text-sm text-gray-700">
+              <strong>Link:</strong> <a href="https://libraries.oberlin.edu/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://libraries.oberlin.edu/</a>
+            </p>
           </div>
         </div>
       </section>

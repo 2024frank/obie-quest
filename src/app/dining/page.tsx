@@ -16,6 +16,9 @@ export default function DiningPage() {
           <FaUtensils className="text-red-700 mr-4 h-7 w-7" aria-hidden="true" />
           <h2 id="dining-halls-heading" className="text-2xl font-semibold text-gray-800">Campus Dining Halls</h2>
         </div>
+        <div className="text-center mb-4">
+          <p className="text-gray-900 font-medium"><strong className="text-red-700">Menu for all campus dining options:</strong> <a href="https://dish.avifoodsystems.com/oberlincollege" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://dish.avifoodsystems.com/oberlincollege</a></p>
+        </div>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
             <h3 className="font-medium text-xl mb-3 text-gray-800">Stevenson Dining Hall</h3>
@@ -29,18 +32,7 @@ export default function DiningPage() {
           </div>
           
           <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Dascomb Dining Hall</h3>
-            <p className="text-gray-700 mb-3">Comfortable dining hall with a home-style atmosphere and varied menu options.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Hours:</strong> Breakfast: 8:00am - 10:00am, Lunch: 11:30am - 1:30pm, Dinner: 5:30pm - 7:30pm, Weekend: Limited Hours</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Comfort Food, Salad Bar, Dessert Station</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Talcott Dining Hall</h3>
+            <h3 className="font-medium text-xl mb-3 text-gray-800">Heritage Dining Hall</h3>
             <p className="text-gray-700 mb-3">Smaller dining hall with a cozy atmosphere and specialized menu items.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Hours:</strong> Breakfast: 8:00am - 10:00am, Lunch: 11:30am - 1:30pm, Dinner: 5:30pm - 7:30pm, Weekend: Closed</p>
@@ -69,6 +61,9 @@ export default function DiningPage() {
           <FaCoffee className="text-red-700 mr-4 h-7 w-7" aria-hidden="true" />
           <h2 id="cafes-heading" className="text-2xl font-semibold text-gray-800">Campus Cafes & Grab-and-Go</h2>
         </div>
+        <div className="text-center mb-4">
+          <p className="text-gray-900 font-medium"><strong className="text-red-700">Menu for all campus dining options:</strong> <a href="https://dish.avifoodsystems.com/oberlincollege" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://dish.avifoodsystems.com/oberlincollege</a></p>
+        </div>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
             <h3 className="font-medium text-xl mb-3 text-gray-800">Azariah&apos;s Café</h3>
@@ -93,18 +88,7 @@ export default function DiningPage() {
           </div>
           
           <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Science Center Café</h3>
-            <p className="text-gray-700 mb-3">Quick service café in the Science Center.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Hours:</strong> Mon-Fri 8:00am - 4:00pm, Sat-Sun Closed</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Coffee, Tea, Pastries, Sandwiches</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Conservatory Café</h3>
+            <h3 className="font-medium text-xl mb-3 text-gray-800">Skybar Cafe</h3>
             <p className="text-gray-700 mb-3">Café serving the Conservatory of Music community.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Hours:</strong> Mon-Fri 8:30am - 5:00pm, Sat-Sun Closed</p>
@@ -127,21 +111,33 @@ export default function DiningPage() {
             <h3 className="font-medium text-xl mb-3 text-gray-800">The Feve</h3>
             <p className="text-gray-700 mb-3">Popular gastropub with creative burgers, craft beers, and brunch.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Address:</strong> 30 S Main St, Oberlin, OH 44074</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> American, Gastropub</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded">
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Student Favorite, Weekend Brunch, Bar</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Link:</strong> <a href="https://www.thefeve.com/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.thefeve.com/</a></p>
             </div>
           </div>
           
           <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Black River Café</h3>
-            <p className="text-gray-700 mb-3">Casual café serving breakfast and lunch with vegan and vegetarian options.</p>
+            <h3 className="font-medium text-xl mb-3 text-gray-800">Black River Wine Shop and Bar</h3>
+            <p className="text-gray-700 mb-3">Wine shop and bar with a selection of wines, beers, and light fare.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> American, Café</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Address:</strong> 15 S Main St, Oberlin, OH 44074</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded mb-2">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> Wine Bar, Small Plates</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded mb-2">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Wine Selection, Cozy Atmosphere, Evening Spot</p>
             </div>
             <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Vegetarian-Friendly, Good Coffee, Morning Favorite</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Link:</strong> <a href="https://www.blackriveroberlin.com/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.blackriveroberlin.com/</a></p>
             </div>
           </div>
           
@@ -149,21 +145,16 @@ export default function DiningPage() {
             <h3 className="font-medium text-xl mb-3 text-gray-800">Aladdin&apos;s Eatery</h3>
             <p className="text-gray-700 mb-3">Lebanese-American restaurant with healthy, flavorful options.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Address:</strong> 5 W College St, Oberlin, OH 44074</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> Lebanese, Mediterranean</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded">
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Vegetarian/Vegan Options, Fresh Ingredients</p>
             </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Agave Burrito Bar & Tequilería</h3>
-            <p className="text-gray-700 mb-3">Mexican restaurant with burritos, tacos, and margaritas.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> Mexican</p>
-            </div>
             <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Build-Your-Own Burritos, Bar, Casual</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Link:</strong> <a href="https://aladdins.com/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://aladdins.com/</a></p>
             </div>
           </div>
           
@@ -171,53 +162,18 @@ export default function DiningPage() {
             <h3 className="font-medium text-xl mb-3 text-gray-800">Kim&apos;s</h3>
             <p className="text-gray-700 mb-3">Korean restaurant with authentic dishes and comfort food.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Address:</strong> 23 Eric Nord Way Suite #1, Oberlin, OH 44074</p>
+            </div>
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> Korean</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded">
+            <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Bibimbap, Bulgogi, Cozy Atmosphere</p>
             </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-lg p-5 hover:border-red-300 transition-colors shadow-sm">
-            <h3 className="font-medium text-xl mb-3 text-gray-800">Blue Rooster Bakehouse</h3>
-            <p className="text-gray-700 mb-3">Artisan bakery with fresh breads, pastries, and coffee.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Cuisine:</strong> Bakery, Café</p>
-            </div>
             <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Features:</strong> Homemade Pastries, Specialty Coffee, Breakfast</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Link:</strong> <a href="https://www.facebook.com/kimsgrocerytakeout/" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.facebook.com/kimsgrocerytakeout/</a></p>
             </div>
           </div>
-        </div>
-      </section>
-      
-      {/* Meal Plan Information */}
-      <section className="bg-white p-8 rounded-lg shadow-md" aria-labelledby="meal-plan-heading">
-        <h2 id="meal-plan-heading" className="text-2xl font-semibold text-gray-800 mb-5">Meal Plan Information</h2>
-        <div className="space-y-5">
-          <p className="text-lg text-gray-700">
-            Oberlin offers various meal plans to fit different student needs and lifestyles.
-            All meal plans include a combination of meal swipes and Flex Points that can be used 
-            at campus dining halls and retail locations.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="border border-gray-300 rounded-lg p-5 shadow-sm">
-              <h3 className="font-medium text-xl mb-2 text-gray-800">Traditional Plan</h3>
-              <p className="text-gray-700 text-base">21 meals per week + $150 Flex Points</p>
-            </div>
-            <div className="border border-gray-300 rounded-lg p-5 shadow-sm">
-              <h3 className="font-medium text-xl mb-2 text-gray-800">Block Plan</h3>
-              <p className="text-gray-700 text-base">200 meals per semester + $250 Flex Points</p>
-            </div>
-            <div className="border border-gray-300 rounded-lg p-5 shadow-sm">
-              <h3 className="font-medium text-xl mb-2 text-gray-800">Flex Plan</h3>
-              <p className="text-gray-700 text-base">14 meals per week + $300 Flex Points</p>
-            </div>
-          </div>
-          <p className="text-lg text-gray-700">
-            For more information about meal plans, visit the Campus Dining Services office in Wilder Hall 
-            or check the Oberlin Dining website.
-          </p>
         </div>
       </section>
     </div>
