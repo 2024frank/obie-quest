@@ -66,10 +66,19 @@ export default function Navbar() {
     localStorage.removeItem('userYear');
     localStorage.removeItem('userMajor');
     
-    // Also remove cookies for middleware
+    // Clear all cookies by setting them to expire in the past
     deleteCookie('isSignedIn');
     deleteCookie('userEmail');
+    deleteCookie('remember-me');
+    deleteCookie('isGuest');
+    deleteCookie('userYear');
+    deleteCookie('userMajor');
+    deleteCookie('userName');
     
+    // Clear all localStorage completely (alternative approach)
+    // localStorage.clear();
+    
+    // Update state and redirect
     setIsSignedIn(false);
     router.push('/signin');
   };

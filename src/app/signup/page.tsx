@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 import { FaUserCircle, FaLock, FaEnvelope } from 'react-icons/fa';
 
 export default function SignUp() {
@@ -30,6 +31,14 @@ export default function SignUp() {
       localStorage.setItem('isSignedIn', 'true');
       localStorage.setItem('userEmail', email);
       localStorage.setItem('userName', name);
+      
+      // Also store in cookies for middleware, just like in signin
+      setCookie('isSignedIn', 'true', { maxAge: 60 * 60 * 24 * 7 }); // 7 days
+      setCookie('userEmail', email, { maxAge: 60 * 60 * 24 * 7 });
+      setCookie('userName', name, { maxAge: 60 * 60 * 24 * 7 });
+      
+      // Trigger a storage event to update other components
+      window.dispatchEvent(new Event('storage'));
       
       // No actual authentication, just redirect to home
       router.push('/');
@@ -62,7 +71,7 @@ export default function SignUp() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder="John Doe"
               />
             </div>
@@ -84,7 +93,7 @@ export default function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder="oberlin@example.com"
               />
             </div>
@@ -106,7 +115,7 @@ export default function SignUp() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
                 placeholder="••••••••"
               />
             </div>
