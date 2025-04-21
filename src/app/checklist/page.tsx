@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaCheckSquare, FaPlus } from 'react-icons/fa';
+import { FaCheckSquare, FaPlus, FaLightbulb } from 'react-icons/fa';
 import { 
   useChecklistStore, 
   ChecklistItem as ChecklistItemType, 
@@ -14,6 +14,8 @@ import ChecklistFilters from '@/components/checklist/ChecklistFilters';
 export default function ChecklistPage() {
   const { items, addItem } = useChecklistStore();
   const [filteredItems, setFilteredItems] = useState<ChecklistItemType[]>([]);
+  const [recommendedItems, setRecommendedItems] = useState<ChecklistItemType[]>([]);
+  const [userItems, setUserItems] = useState<ChecklistItemType[]>([]);
   const [progress, setProgress] = useState({ completed: 0, total: 0 });
   const [showAddModal, setShowAddModal] = useState(false);
   const [newItem, setNewItem] = useState({
@@ -26,6 +28,11 @@ export default function ChecklistPage() {
   // Initialize filtered items with all items
   useEffect(() => {
     setFilteredItems(items);
+    
+    // Separate recommended from user-added items
+    setRecommendedItems(items.filter(item => item.isRecommended));
+    setUserItems(items.filter(item => !item.isRecommended));
+    
     updateProgress(items);
   }, [items]);
   
@@ -43,6 +50,7 @@ export default function ChecklistPage() {
     categories: ChecklistCategory[];
     yearLevels: YearLevel[];
     completed: boolean | null;
+    isRecommended: boolean | null;
   }) => {
     let filtered = items;
     
@@ -58,7 +66,16 @@ export default function ChecklistPage() {
       filtered = filtered.filter(item => item.completed === filters.completed);
     }
     
+    if (filters.isRecommended !== null) {
+      filtered = filtered.filter(item => item.isRecommended === filters.isRecommended);
+    }
+    
     setFilteredItems(filtered);
+    
+    // Also update the separated lists
+    setRecommendedItems(filtered.filter(item => item.isRecommended));
+    setUserItems(filtered.filter(item => !item.isRecommended));
+    
     updateProgress(filtered);
   };
   
@@ -90,7 +107,7 @@ export default function ChecklistPage() {
         <h1 className="text-3xl font-bold text-gray-800 mb-4">My Oberlin Checklist</h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           Track your personalized 4-year Oberlin College experience with this checklist.
-          Add your own items or complete the suggested experiences!
+          Add your own items or complete the recommended experiences!
         </p>
       </header>
       
@@ -135,33 +152,58 @@ export default function ChecklistPage() {
       {/* Filters */}
       <ChecklistFilters onFilterChange={handleFilterChange} />
       
-      {/* Checklist Items */}
-      <section className="space-y-6">
-        {filteredItems.length > 0 ? (
-          <div>
-            {filteredItems.map(item => (
+      {/* Recommended Checklist Items */}
+      {recommendedItems.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800 flex items-center">
+            <FaLightbulb className="text-yellow-500 mr-2" />
+            <span>Recommended Oberlin Experiences</span>
+            <span className="ml-2 bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-sm">
+              {recommendedItems.length}
+            </span>
+          </h2>
+          <div className="space-y-3">
+            {recommendedItems.map(item => (
               <ChecklistItem key={item.id} item={item} />
             ))}
           </div>
-        ) : (
-          <div className="bg-white p-8 rounded-lg shadow-md text-center">
-            <FaCheckSquare className="mx-auto text-gray-300 text-5xl mb-4" />
-            <h3 className="text-xl font-medium text-gray-700 mb-2">No items found</h3>
-            <p className="text-gray-500 mb-4">
-              {items.length > 0 
-                ? 'No items match your current filters. Try adjusting your filters or add a new item.'
-                : 'Your checklist is empty. Add your first item to get started!'}
-            </p>
-            <button
-              onClick={() => setShowAddModal(true)}
-              className="inline-flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors"
-            >
-              <FaPlus className="text-sm" />
-              Add New Item
-            </button>
+        </section>
+      )}
+      
+      {/* My Checklist Items */}
+      {userItems.length > 0 && (
+        <section className="space-y-4 mt-8">
+          <h2 className="text-xl font-semibold text-gray-800 flex items-center">
+            <span>My Added Activities</span>
+            <span className="ml-2 bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-sm">
+              {userItems.length}
+            </span>
+          </h2>
+          <div className="space-y-3">
+            {userItems.map(item => (
+              <ChecklistItem key={item.id} item={item} />
+            ))}
           </div>
-        )}
-      </section>
+        </section>
+      )}
+      
+      {/* Empty State */}
+      {filteredItems.length === 0 && (
+        <div className="bg-white p-8 rounded-lg shadow-md text-center">
+          <FaCheckSquare className="mx-auto text-gray-300 text-5xl mb-4" />
+          <h3 className="text-xl font-medium text-gray-700 mb-2">No items found</h3>
+          <p className="text-gray-500 mb-4">
+            No items match your current filters. Try adjusting your filters or add a new item.
+          </p>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="inline-flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors"
+          >
+            <FaPlus className="text-sm" />
+            Add New Item
+          </button>
+        </div>
+      )}
       
       {/* Add Item Modal */}
       {showAddModal && (

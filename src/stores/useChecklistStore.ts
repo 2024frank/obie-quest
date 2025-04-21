@@ -13,6 +13,7 @@ export interface ChecklistItem {
   completed: boolean;
   dateAdded: string;
   dateCompleted?: string;
+  isRecommended?: boolean;
 }
 
 interface ChecklistState {
@@ -44,6 +45,7 @@ export const useChecklistStore = create<ChecklistState>()(
             id: generateId(),
             dateAdded: new Date().toISOString(),
             completed: false,
+            isRecommended: false,
           }
         ]
       })),
@@ -120,7 +122,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Schedule a meeting with your academic advisor to plan your courses',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -129,7 +132,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Take a tour of the library and learn about its resources',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -138,7 +142,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Visit at least three professors during their office hours',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Freshman Year Social
@@ -149,7 +154,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Attend the student activities fair and join at least one club',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -158,7 +164,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Go to a concert, play, or other performance on campus',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Freshman Year Campus
@@ -169,7 +176,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Eat at each campus dining hall at least once',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -178,7 +186,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Explore the art collection at the Allen Memorial Art Museum',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Sophomore Year Academic
@@ -189,7 +198,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'sophomore',
       description: 'Complete the necessary paperwork to declare your major',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -198,7 +208,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'sophomore',
       description: 'Look into projects, internships, or other opportunities for Winter Term',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Sophomore Year Social
@@ -209,7 +220,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'sophomore',
       description: 'Participate in a community service project in Oberlin',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Junior Year Academic
@@ -220,7 +232,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'junior',
       description: 'Research and apply for study abroad programs',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -229,7 +242,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'junior',
       description: 'Start planning for senior research projects or capstone',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Junior Year Career
@@ -240,7 +254,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'junior',
       description: 'Refresh your resume and professional profiles',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -249,7 +264,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'junior',
       description: 'Research and apply for internships in your field',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Senior Year Academic
@@ -260,7 +276,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'senior',
       description: 'Finish your honors thesis, capstone, or senior project',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Senior Year Career
@@ -271,7 +288,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'senior',
       description: 'Get help with job applications and interview preparation',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -280,7 +298,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'senior',
       description: 'Apply for jobs, graduate schools, or other post-graduation plans',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     
     // Downtown Explorations (all years)
@@ -291,7 +310,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'Try the famous burgers at this popular student hangout',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -300,7 +320,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'freshman',
       description: 'See a film at Oberlin\'s historic movie theater',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     },
     {
       id: generateId(),
@@ -309,7 +330,8 @@ function getDefaultItems(): ChecklistItem[] {
       yearLevel: 'sophomore',
       description: 'Browse local produce and goods at the farmers market',
       completed: false,
-      dateAdded: new Date().toISOString()
+      dateAdded: new Date().toISOString(),
+      isRecommended: true
     }
   ];
 } 

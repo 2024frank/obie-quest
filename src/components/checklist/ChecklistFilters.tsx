@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChecklistCategory, YearLevel } from '@/stores/useChecklistStore';
-import { FaFilter, FaGraduationCap, FaUsers, FaBriefcase, FaUniversity, FaStore } from 'react-icons/fa';
+import { FaFilter, FaGraduationCap, FaUsers, FaBriefcase, FaUniversity, FaStore, FaLightbulb, FaUserEdit } from 'react-icons/fa';
 
 const categories: { value: ChecklistCategory; label: string; icon: React.ReactNode }[] = [
   { value: 'academic', label: 'Academic', icon: <FaGraduationCap className="text-blue-600" /> },
@@ -22,6 +22,7 @@ interface ChecklistFiltersProps {
     categories: ChecklistCategory[];
     yearLevels: YearLevel[];
     completed: boolean | null;
+    isRecommended: boolean | null;
   }) => void;
 }
 
@@ -29,6 +30,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
   const [selectedCategories, setSelectedCategories] = useState<ChecklistCategory[]>([]);
   const [selectedYears, setSelectedYears] = useState<YearLevel[]>([]);
   const [completionStatus, setCompletionStatus] = useState<boolean | null>(null);
+  const [recommendedStatus, setRecommendedStatus] = useState<boolean | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   
   const handleCategoryToggle = (category: ChecklistCategory) => {
@@ -38,7 +40,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
         ? prev.filter(cat => cat !== category)
         : [...prev, category];
         
-      updateFilters(newSelection, selectedYears, completionStatus);
+      updateFilters(newSelection, selectedYears, completionStatus, recommendedStatus);
       return newSelection;
     });
   };
@@ -50,25 +52,32 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
         ? prev.filter(y => y !== year)
         : [...prev, year];
         
-      updateFilters(selectedCategories, newSelection, completionStatus);
+      updateFilters(selectedCategories, newSelection, completionStatus, recommendedStatus);
       return newSelection;
     });
   };
   
   const handleCompletionChange = (status: boolean | null) => {
     setCompletionStatus(status);
-    updateFilters(selectedCategories, selectedYears, status);
+    updateFilters(selectedCategories, selectedYears, status, recommendedStatus);
+  };
+  
+  const handleRecommendedChange = (status: boolean | null) => {
+    setRecommendedStatus(status);
+    updateFilters(selectedCategories, selectedYears, completionStatus, status);
   };
   
   const updateFilters = (
     categories: ChecklistCategory[],
     years: YearLevel[],
-    completed: boolean | null
+    completed: boolean | null,
+    isRecommended: boolean | null
   ) => {
     onFilterChange({
       categories,
       yearLevels: years,
-      completed: completed
+      completed,
+      isRecommended
     });
   };
   
@@ -76,7 +85,8 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
     setSelectedCategories([]);
     setSelectedYears([]);
     setCompletionStatus(null);
-    updateFilters([], [], null);
+    setRecommendedStatus(null);
+    updateFilters([], [], null, null);
   };
   
   return (
@@ -143,6 +153,45 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
             </div>
           </div>
           
+          {/* Item Type */}
+          <div>
+            <h3 className="font-medium text-gray-700 mb-2">Item Type</h3>
+            <div className="flex gap-2">
+              <button
+                onClick={() => handleRecommendedChange(true)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-colors ${
+                  recommendedStatus === true
+                    ? 'bg-yellow-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <FaLightbulb className="text-yellow-500" />
+                Recommended
+              </button>
+              <button
+                onClick={() => handleRecommendedChange(false)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-colors ${
+                  recommendedStatus === false
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <FaUserEdit className="text-blue-500" />
+                My Items
+              </button>
+              <button
+                onClick={() => handleRecommendedChange(null)}
+                className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
+                  recommendedStatus === null
+                    ? 'bg-gray-800 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                All
+              </button>
+            </div>
+          </div>
+          
           {/* Completion Status */}
           <div>
             <h3 className="font-medium text-gray-700 mb-2">Status</h3>
@@ -183,7 +232,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
           {/* Active Filters Summary */}
           <div className="pt-3 border-t border-gray-100">
             <div className="text-sm text-gray-500">
-              {selectedCategories.length > 0 || selectedYears.length > 0 || completionStatus !== null ? (
+              {selectedCategories.length > 0 || selectedYears.length > 0 || completionStatus !== null || recommendedStatus !== null ? (
                 <span>
                   Active filters: 
                   {selectedCategories.length > 0 && (
@@ -201,6 +250,12 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
                     <span className="ml-1">
                       {(selectedCategories.length > 0 || selectedYears.length > 0) && ','} 
                       {completionStatus ? 'completed' : 'pending'}
+                    </span>
+                  )}
+                  {recommendedStatus !== null && (
+                    <span className="ml-1">
+                      {(selectedCategories.length > 0 || selectedYears.length > 0 || completionStatus !== null) && ','} 
+                      {recommendedStatus ? 'recommended' : 'my items'}
                     </span>
                   )}
                 </span>
