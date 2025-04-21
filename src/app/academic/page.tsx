@@ -72,8 +72,8 @@ export default function AcademicPage() {
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Residence Hall Common Areas</h3>
-            <p className="text-gray-600 mb-2">Convenient study spaces in residential buildings.</p>
-            <p className="text-sm"><strong>Features:</strong> Wi-Fi, 24/7 Access, Close to Living Spaces</p>
+            <p className="text-gray-700 mb-2">Convenient study spaces in residential buildings.</p>
+            <p className="text-sm text-gray-700"><strong>Features:</strong> Wi-Fi, 24/7 Access, Close to Living Spaces</p>
           </div>
         </div>
       </section>
@@ -87,23 +87,23 @@ export default function AcademicPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Writing Center</h3>
-            <p className="text-gray-600 mb-2">One-on-one writing support for all courses and disciplines.</p>
-            <p className="text-sm"><strong>Location:</strong> Mudd Center, Floor 2</p>
+            <p className="text-gray-700 mb-2">One-on-one writing support for all courses and disciplines.</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Mudd Center, Floor 2</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Quantitative Skills Center</h3>
-            <p className="text-gray-600 mb-2">Support for mathematics, statistics, and quantitative reasoning.</p>
-            <p className="text-sm"><strong>Location:</strong> King Building, Room 105</p>
+            <p className="text-gray-700 mb-2">Support for mathematics, statistics, and quantitative reasoning.</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> King Building, Room 105</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Peer Tutoring</h3>
-            <p className="text-gray-600 mb-2">Free tutoring services across various subjects and courses.</p>
-            <p className="text-sm"><strong>How to Access:</strong> Sign up through the Academic Advising Resource Center</p>
+            <p className="text-gray-700 mb-2">Free tutoring services across various subjects and courses.</p>
+            <p className="text-sm text-gray-700"><strong>How to Access:</strong> Sign up through the Academic Advising Resource Center</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Academic Advising</h3>
-            <p className="text-gray-600 mb-2">Guidance on course selection, major requirements, and academic planning.</p>
-            <p className="text-sm"><strong>Location:</strong> Peters Hall, Room 202</p>
+            <p className="text-gray-700 mb-2">Guidance on course selection, major requirements, and academic planning.</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Peters Hall, Room 202</p>
           </div>
         </div>
       </section>
@@ -117,23 +117,23 @@ export default function AcademicPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Career Development Center</h3>
-            <p className="text-gray-600 mb-2">Resources for internships, career planning, and job applications.</p>
-            <p className="text-sm"><strong>Location:</strong> Stevenson Hall</p>
+            <p className="text-gray-700 mb-2">Resources for internships, career planning, and job applications.</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Stevenson Hall</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Winter Term</h3>
-            <p className="text-gray-600 mb-2">Information on January term projects, internships, and research opportunities.</p>
-            <p className="text-sm"><strong>Contact:</strong> Winter Term Office, Peters Hall</p>
+            <p className="text-gray-700 mb-2">Information on January term projects, internships, and research opportunities.</p>
+            <p className="text-sm text-gray-700"><strong>Contact:</strong> Winter Term Office, Peters Hall</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Study Abroad</h3>
-            <p className="text-gray-600 mb-2">Resources for international education opportunities.</p>
-            <p className="text-sm"><strong>Location:</strong> Peters Hall, Room 205</p>
+            <p className="text-gray-700 mb-2">Resources for international education opportunities.</p>
+            <p className="text-sm text-gray-700"><strong>Location:</strong> Peters Hall, Room 205</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Undergraduate Research</h3>
-            <p className="text-gray-600 mb-2">Support for student research projects and funding opportunities.</p>
-            <p className="text-sm"><strong>Contact:</strong> Office of Undergraduate Research</p>
+            <p className="text-gray-700 mb-2">Support for student research projects and funding opportunities.</p>
+            <p className="text-sm text-gray-700"><strong>Contact:</strong> Office of Undergraduate Research</p>
           </div>
         </div>
       </section>
@@ -147,19 +147,19 @@ export default function AcademicPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">PRESTO</h3>
-            <p className="text-gray-600 mb-2">Oberlin&apos;s student information system for course registration, grades, and academic records.</p>
+            <p className="text-gray-700 mb-2">Oberlin&apos;s student information system for course registration, grades, and academic records.</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Blackboard</h3>
-            <p className="text-gray-600 mb-2">Course management system for assignments, readings, and communications.</p>
+            <p className="text-gray-700 mb-2">Course management system for assignments, readings, and communications.</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Library Databases</h3>
-            <p className="text-gray-600 mb-2">Online access to journals, books, and research materials.</p>
+            <p className="text-gray-700 mb-2">Online access to journals, books, and research materials.</p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="font-medium text-lg mb-2 text-gray-800">Oberlin Mobile App</h3>
-            <p className="text-gray-600 mb-2">Access to campus resources, events, and information on the go.</p>
+            <p className="text-gray-700 mb-2">Access to campus resources, events, and information on the go.</p>
           </div>
         </div>
       </section>
