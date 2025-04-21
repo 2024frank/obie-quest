@@ -220,9 +220,9 @@ export default function ChecklistPage() {
       
       {/* Add Item Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-            <h2 className="text-xl font-semibold mb-4">Add New Checklist Item</h2>
+            <h2 className="text-xl font-semibold mb-4 text-gray-800">Add New Checklist Item</h2>
             
             <form onSubmit={handleAddItem}>
               <div className="mb-4">
@@ -234,8 +234,8 @@ export default function ChecklistPage() {
                   id="title"
                   value={newItem.title}
                   onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                  placeholder="Visit the Allen Memorial Art Museum"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
+                  placeholder=""
                   required
                 />
               </div>
@@ -248,8 +248,8 @@ export default function ChecklistPage() {
                   id="description"
                   value={newItem.description}
                   onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                  placeholder="Explore the art collection at the Allen Memorial Art Museum"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
+                  placeholder=""
                   rows={3}
                 />
               </div>
@@ -263,7 +263,7 @@ export default function ChecklistPage() {
                     id="category"
                     value={newItem.category}
                     onChange={(e) => setNewItem({ ...newItem, category: e.target.value as ChecklistCategory })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
                   >
                     <option value="academic">Academic</option>
                     <option value="social">Social</option>
@@ -281,7 +281,7 @@ export default function ChecklistPage() {
                     id="yearLevel"
                     value={newItem.yearLevel}
                     onChange={(e) => setNewItem({ ...newItem, yearLevel: e.target.value as YearLevel })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
                   >
                     <option value="freshman">Freshman</option>
                     <option value="sophomore">Sophomore</option>
