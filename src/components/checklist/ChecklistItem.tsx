@@ -83,13 +83,13 @@ export default function ChecklistItem({ item }: ChecklistItemProps) {
               </h3>
               
               {item.description && (
-                <p className={`text-sm mt-1 ${item.completed ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`text-sm mt-1 ${item.completed ? 'text-gray-500' : 'text-gray-700'}`}>
                   {item.description}
                 </p>
               )}
               
               {item.completed && item.dateCompleted && (
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-600 mt-2">
                   Completed on {new Date(item.dateCompleted).toLocaleDateString()}
                 </p>
               )}
@@ -99,7 +99,7 @@ export default function ChecklistItem({ item }: ChecklistItemProps) {
           {(showDelete && !item.isRecommended) && (
             <button 
               onClick={() => removeItem(item.id)}
-              className="text-gray-400 hover:text-red-600 transition-colors"
+              className="text-gray-500 hover:text-red-600 transition-colors"
               title="Delete item"
             >
               <FaTrashAlt className="h-4 w-4" />

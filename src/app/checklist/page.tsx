@@ -118,7 +118,7 @@ export default function ChecklistPage() {
     <div className="space-y-8 max-w-4xl mx-auto">
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">My Oberlin Checklist</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
           Track your personalized 4-year Oberlin College experience with this checklist.
           Add your own items or complete the recommended experiences!
         </p>
@@ -127,12 +127,12 @@ export default function ChecklistPage() {
       {/* Progress Bar */}
       <section className="bg-white p-6 rounded-lg shadow-md">
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold mb-2 sm:mb-0">Your Progress</h2>
+          <h2 className="text-xl font-semibold mb-2 sm:mb-0 text-gray-800">Your Progress</h2>
           <div className="flex items-center gap-2">
-            <span className="text-gray-600 text-sm">
+            <span className="text-gray-700 text-sm">
               {progress.completed} of {progress.total} completed
             </span>
-            <span className="text-sm font-medium">
+            <span className="text-sm font-medium text-gray-800">
               {progress.total > 0 
                 ? `(${Math.round((progress.completed / progress.total) * 100)}%)` 
                 : '(0%)'}
@@ -203,9 +203,9 @@ export default function ChecklistPage() {
       {/* Empty State */}
       {filteredItems.length === 0 && (
         <div className="bg-white p-8 rounded-lg shadow-md text-center">
-          <FaCheckSquare className="mx-auto text-gray-300 text-5xl mb-4" />
-          <h3 className="text-xl font-medium text-gray-700 mb-2">No items found</h3>
-          <p className="text-gray-500 mb-4">
+          <FaCheckSquare className="mx-auto text-gray-400 text-5xl mb-4" />
+          <h3 className="text-xl font-medium text-gray-800 mb-2">No items found</h3>
+          <p className="text-gray-700 mb-4">
             No items match your current filters. Try adjusting your filters or add a new item.
           </p>
           <button

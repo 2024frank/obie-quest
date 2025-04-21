@@ -114,7 +114,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
         <div className="bg-white p-4 rounded-lg border border-gray-200 space-y-4">
           {/* Categories */}
           <div>
-            <h3 className="font-medium text-gray-700 mb-2">Categories</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Categories</h3>
             <div className="flex flex-wrap gap-2">
               {categories.map(category => (
                 <button
@@ -135,7 +135,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
           
           {/* Year Levels */}
           <div>
-            <h3 className="font-medium text-gray-700 mb-2">Year</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Year</h3>
             <div className="flex flex-wrap gap-2">
               {yearLevels.map(year => (
                 <button
@@ -155,7 +155,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
           
           {/* Item Type */}
           <div>
-            <h3 className="font-medium text-gray-700 mb-2">Item Type</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Item Type</h3>
             <div className="flex gap-2">
               <button
                 onClick={() => handleRecommendedChange(true)}
@@ -194,7 +194,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
           
           {/* Completion Status */}
           <div>
-            <h3 className="font-medium text-gray-700 mb-2">Status</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Status</h3>
             <div className="flex gap-2">
               <button
                 onClick={() => handleCompletionChange(true)}
@@ -231,7 +231,7 @@ export default function ChecklistFilters({ onFilterChange }: ChecklistFiltersPro
           
           {/* Active Filters Summary */}
           <div className="pt-3 border-t border-gray-100">
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-700">
               {selectedCategories.length > 0 || selectedYears.length > 0 || completionStatus !== null || recommendedStatus !== null ? (
                 <span>
                   Active filters: 
