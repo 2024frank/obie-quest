@@ -102,6 +102,31 @@ export const useChecklistStore = create<ChecklistState>()(
     }),
     {
       name: 'oberlin-checklist-storage',
+      onRehydrateStorage: () => {
+        return (newState, error) => {
+          if (error) {
+            console.error('Error rehydrating checklist store:', error);
+            return;
+          }
+          
+          if (newState && newState.items) {
+            // Ensure isRecommended is set properly on all items
+            // Fix any items loaded from storage that might be missing the flag
+            setTimeout(() => {
+              const store = useChecklistStore.getState();
+              const updatedItems = store.items.map(item => {
+                // If isRecommended is undefined, set it to true for default items
+                if (item.isRecommended === undefined) {
+                  return { ...item, isRecommended: true };
+                }
+                return item;
+              });
+              
+              useChecklistStore.setState({ items: updatedItems });
+            }, 0);
+          }
+        };
+      }
     }
   )
 );

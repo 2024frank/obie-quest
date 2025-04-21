@@ -27,11 +27,21 @@ export default function ChecklistPage() {
   
   // Initialize filtered items with all items
   useEffect(() => {
+    console.log("All items:", items);
+    console.log("Items with isRecommended=true:", items.filter(item => item.isRecommended));
+    console.log("Items with isRecommended=undefined or false:", items.filter(item => !item.isRecommended));
+    
     setFilteredItems(items);
     
     // Separate recommended from user-added items
-    setRecommendedItems(items.filter(item => item.isRecommended));
-    setUserItems(items.filter(item => !item.isRecommended));
+    const recommended = items.filter(item => item.isRecommended === true);
+    const userAdded = items.filter(item => item.isRecommended !== true);
+    
+    console.log("Recommended items count:", recommended.length);
+    console.log("User-added items count:", userAdded.length);
+    
+    setRecommendedItems(recommended);
+    setUserItems(userAdded);
     
     updateProgress(items);
   }, [items]);
@@ -67,14 +77,17 @@ export default function ChecklistPage() {
     }
     
     if (filters.isRecommended !== null) {
-      filtered = filtered.filter(item => item.isRecommended === filters.isRecommended);
+      filtered = filtered.filter(item => (item.isRecommended === filters.isRecommended));
     }
     
     setFilteredItems(filtered);
     
     // Also update the separated lists
-    setRecommendedItems(filtered.filter(item => item.isRecommended));
-    setUserItems(filtered.filter(item => !item.isRecommended));
+    const recommended = filtered.filter(item => item.isRecommended === true);
+    const userAdded = filtered.filter(item => item.isRecommended !== true);
+    
+    setRecommendedItems(recommended);
+    setUserItems(userAdded);
     
     updateProgress(filtered);
   };
