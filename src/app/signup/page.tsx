@@ -72,7 +72,7 @@ export default function SignUp() {
                 onChange={(e) => setName(e.target.value)}
                 required
                 className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
-                placeholder="John Doe"
+                placeholder=""
               />
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function SignUp() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
-                placeholder="oberlin@example.com"
+                placeholder=""
               />
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-800"
-                placeholder="••••••••"
+                placeholder=""
               />
             </div>
           </div>

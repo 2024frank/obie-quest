@@ -69,7 +69,7 @@ export default function SignIn() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="pl-10 w-full px-4 py-3 text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                placeholder="oberlin@example.com"
+                placeholder=""
                 aria-required="true"
               />
             </div>
@@ -92,7 +92,7 @@ export default function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="pl-10 w-full px-4 py-3 text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                placeholder="••••••••"
+                placeholder=""
                 aria-required="true"
               />
             </div>
