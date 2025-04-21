@@ -12,6 +12,27 @@ export default function OrganizationsPage() {
         </p>
       </header>
 
+      {/* Official Resources Link */}
+      <section className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Looking for more student organizations?</h2>
+            <p className="text-gray-700">
+              Visit the official Oberlin College website for a complete directory of all registered student organizations, 
+              including contact information and how to join.
+            </p>
+          </div>
+          <a 
+            href="https://www.oberlin.edu/life-at-oberlin/clubs-organizations" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="bg-red-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors flex-shrink-0"
+          >
+            Official Directory &rarr;
+          </a>
+        </div>
+      </section>
+
       {/* Cultural Organizations */}
       <section className="bg-white p-6 rounded-lg shadow-md">
         <div className="flex items-center mb-4">

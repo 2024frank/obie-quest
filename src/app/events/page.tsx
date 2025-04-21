@@ -317,9 +317,22 @@ export default function EventsPage() {
             <FaUsers className="text-red-700 mr-3 h-6 w-6" />
             <h2 className="text-2xl font-semibold text-gray-800">Student Organizations</h2>
           </div>
-          <Link href="/organizations" className="text-red-700 hover:underline font-medium">
-            View Complete List
-          </Link>
+          <div className="flex items-center space-x-4">
+            <a
+              href="https://www.oberlin.edu/life-at-oberlin/clubs-organizations"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-700 hover:underline font-medium flex items-center"
+            >
+              <span>Official Directory</span>
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            <Link href="/organizations" className="text-red-700 hover:underline font-medium">
+              View Complete List
+            </Link>
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-4">
