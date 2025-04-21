@@ -1,7 +1,98 @@
-import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaUsers, FaGraduationCap, FaRunning, FaCalendarPlus, FaShare } from 'react-icons/fa';
+'use client';
+
+import { useState } from 'react';
+import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaUsers, FaGraduationCap, FaRunning, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
 
+// Define our departments and their associated events
+const departments = [
+  { id: 'all', name: 'All Departments' },
+  { id: 'conservatory', name: 'Conservatory of Music' },
+  { id: 'artsdept', name: 'Arts Department' },
+  { id: 'athletics', name: 'Athletics Department' },
+  { id: 'studentlife', name: 'Student Life' },
+  { id: 'academics', name: 'Academic Departments' }
+];
+
+// Sample events with department tags
+const allEvents = [
+  {
+    id: 1,
+    title: 'Spring Concert Series',
+    description: 'Annual celebration featuring student performances and guest artists.',
+    date: 'April 28-30, 2023',
+    venue: 'Finney Chapel',
+    department: 'conservatory'
+  },
+  {
+    id: 2,
+    title: 'Commencement & Reunion Weekend',
+    description: 'Graduation ceremony and alumni celebrations.',
+    date: 'May 26-29, 2023',
+    venue: 'Tappan Square',
+    department: 'academics'
+  },
+  {
+    id: 3,
+    title: 'Summer Jazz Festival',
+    description: 'Three-day festival featuring jazz performances from students and faculty.',
+    date: 'June 15-17, 2023',
+    venue: 'Conservatory Courtyard',
+    department: 'conservatory'
+  },
+  {
+    id: 4,
+    title: 'Faculty Lecture Series',
+    description: 'Distinguished faculty members share research and insights.',
+    date: 'Every Wednesday, 4:30 PM',
+    venue: 'King Building',
+    department: 'academics'
+  },
+  {
+    id: 5,
+    title: 'Student Art Exhibition',
+    description: 'Showcasing work from senior studio art majors.',
+    date: 'May 5-20, 2023',
+    venue: 'Allen Memorial Art Museum',
+    department: 'artsdept'
+  },
+  {
+    id: 6,
+    title: 'Varsity Basketball Game',
+    description: 'Oberlin Yeomen vs. Kenyon College',
+    date: 'February 18, 2023, 7:00 PM',
+    venue: 'Philips Gym',
+    department: 'athletics'
+  },
+  {
+    id: 7,
+    title: 'Cultural Festival',
+    description: 'Celebration of diversity with food, performances, and activities.',
+    date: 'April 15, 2023',
+    venue: 'Wilder Bowl',
+    department: 'studentlife'
+  },
+  {
+    id: 8,
+    title: 'Theater Department Production',
+    description: 'Student-led production of "A Midsummer Night\'s Dream"',
+    date: 'March 10-12, 2023',
+    venue: 'Hall Auditorium',
+    department: 'artsdept'
+  }
+];
+
 export default function EventsPage() {
+  const [selectedDepartment, setSelectedDepartment] = useState('all');
+  
+  // Filter events based on selected department
+  const filteredEvents = selectedDepartment === 'all' 
+    ? allEvents 
+    : allEvents.filter(event => event.department === selectedDepartment);
+
+  // Get the current department name for display
+  const currentDepartmentName = departments.find(dept => dept.id === selectedDepartment)?.name || 'All Departments';
+  
   return (
     <div className="space-y-8">
       <header className="text-center mb-12">
@@ -11,83 +102,88 @@ export default function EventsPage() {
         </p>
       </header>
       
+      {/* Department Filter */}
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
+            <FaFilter className="text-red-700 mr-3 h-5 w-5" />
+            <h2 className="text-xl font-semibold text-gray-800">Filter Events</h2>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="w-full sm:w-1/2">
+            <label htmlFor="department-filter" className="block text-sm font-medium text-gray-700 mb-1">
+              Department
+            </label>
+            <select
+              id="department-filter"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
+            >
+              {departments.map(dept => (
+                <option key={dept.id} value={dept.id}>{dept.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+      
       {/* Upcoming Events */}
       <section className="bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center mb-4">
-          <FaCalendarAlt className="text-red-700 mr-3 h-6 w-6" />
-          <h2 className="text-2xl font-semibold text-gray-800">Upcoming Events</h2>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
+            <FaCalendarAlt className="text-red-700 mr-3 h-6 w-6" />
+            <h2 className="text-2xl font-semibold text-gray-800">
+              {selectedDepartment === 'all' ? 'All Upcoming Events' : `${currentDepartmentName} Events`}
+            </h2>
+          </div>
+          {selectedDepartment !== 'all' && (
+            <button 
+              onClick={() => setSelectedDepartment('all')}
+              className="text-red-700 hover:underline text-sm font-medium"
+            >
+              View All Departments
+            </button>
+          )}
         </div>
         
         <div className="space-y-4">
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-medium text-xl text-gray-800">Spring Concert Series</h3>
-                <p className="text-gray-700 mb-2">Annual celebration featuring student performances and guest artists.</p>
-                <div className="bg-gray-50 p-3 rounded mb-2">
-                  <p className="text-gray-900"><strong className="text-red-700">Date:</strong> April 28-30, 2023</p>
-                  <p className="text-gray-900"><strong className="text-red-700">Venue:</strong> Finney Chapel</p>
+          {filteredEvents.length > 0 ? (
+            <>
+              {filteredEvents.map(event => (
+                <div key={event.id} className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium text-xl text-gray-800">{event.title}</h3>
+                      <p className="text-gray-700 mb-2">{event.description}</p>
+                      <div className="bg-gray-50 p-3 rounded mb-2">
+                        <p className="text-gray-900"><strong className="text-red-700">Date:</strong> {event.date}</p>
+                        <p className="text-gray-900"><strong className="text-red-700">Venue:</strong> {event.venue}</p>
+                      </div>
+                    </div>
+                    <div className="flex space-x-2">
+                      <button className="text-red-700 hover:text-red-800">
+                        <FaCalendarPlus className="h-5 w-5" title="Add to calendar" />
+                      </button>
+                      <button className="text-red-700 hover:text-red-800">
+                        <FaShare className="h-5 w-5" title="Share event" />
+                      </button>
+                    </div>
+                  </div>
+                  <Link href="#" className="text-red-700 hover:underline text-sm font-medium">View details</Link>
                 </div>
-              </div>
-              <div className="flex space-x-2">
-                <button className="text-red-700 hover:text-red-800">
-                  <FaCalendarPlus className="h-5 w-5" title="Add to calendar" />
-                </button>
-                <button className="text-red-700 hover:text-red-800">
-                  <FaShare className="h-5 w-5" title="Share event" />
-                </button>
-              </div>
+              ))}
+            
+              <Link href="#" className="block text-center bg-red-700 text-white py-2 rounded hover:bg-red-800 transition-colors font-medium">
+                View All Events
+              </Link>
+            </>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-600">No events found for this department. Try selecting a different department.</p>
             </div>
-            <Link href="#" className="text-red-700 hover:underline text-sm font-medium">View details</Link>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-medium text-xl text-gray-800">Commencement & Reunion Weekend</h3>
-                <p className="text-gray-700 mb-2">Graduation ceremony and alumni celebrations.</p>
-                <div className="bg-gray-50 p-3 rounded mb-2">
-                  <p className="text-gray-900"><strong className="text-red-700">Date:</strong> May 26-29, 2023</p>
-                  <p className="text-gray-900"><strong className="text-red-700">Venue:</strong> Tappan Square</p>
-                </div>
-              </div>
-              <div className="flex space-x-2">
-                <button className="text-red-700 hover:text-red-800">
-                  <FaCalendarPlus className="h-5 w-5" title="Add to calendar" />
-                </button>
-                <button className="text-red-700 hover:text-red-800">
-                  <FaShare className="h-5 w-5" title="Share event" />
-                </button>
-              </div>
-            </div>
-            <Link href="#" className="text-red-700 hover:underline text-sm font-medium">View details</Link>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-medium text-xl text-gray-800">Summer Jazz Festival</h3>
-                <p className="text-gray-700 mb-2">Three-day festival featuring jazz performances from students and faculty.</p>
-                <div className="bg-gray-50 p-3 rounded mb-2">
-                  <p className="text-gray-900"><strong className="text-red-700">Date:</strong> June 15-17, 2023</p>
-                  <p className="text-gray-900"><strong className="text-red-700">Venue:</strong> Conservatory Courtyard</p>
-                </div>
-              </div>
-              <div className="flex space-x-2">
-                <button className="text-red-700 hover:text-red-800">
-                  <FaCalendarPlus className="h-5 w-5" title="Add to calendar" />
-                </button>
-                <button className="text-red-700 hover:text-red-800">
-                  <FaShare className="h-5 w-5" title="Share event" />
-                </button>
-              </div>
-            </div>
-            <Link href="#" className="text-red-700 hover:underline text-sm font-medium">View details</Link>
-          </div>
-          
-          <Link href="#" className="block text-center bg-red-700 text-white py-2 rounded hover:bg-red-800 transition-colors font-medium">
-            View All Events
-          </Link>
+          )}
         </div>
       </section>
       
