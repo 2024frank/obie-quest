@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaUsers, FaGraduationCap, FaRunning, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
 
-// Define our departments and their associated events
-const departments = [
-  { id: 'all', name: 'All Departments' },
+// Define our categories and their associated events
+const categories = [
+  { id: 'all', name: 'All Categories' },
   { id: 'conservatory', name: 'Conservatory of Music' },
   { id: 'artsdept', name: 'Arts Department' },
   { id: 'athletics', name: 'Athletics Department' },
@@ -14,7 +14,7 @@ const departments = [
   { id: 'academics', name: 'Academic Departments' }
 ];
 
-// Sample events with department tags
+// Sample events with category tags
 const allEvents = [
   {
     id: 1,
@@ -22,7 +22,7 @@ const allEvents = [
     description: 'Annual celebration featuring student performances and guest artists.',
     date: 'April 28-30, 2023',
     venue: 'Finney Chapel',
-    department: 'conservatory'
+    category: 'conservatory'
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const allEvents = [
     description: 'Graduation ceremony and alumni celebrations.',
     date: 'May 26-29, 2023',
     venue: 'Tappan Square',
-    department: 'academics'
+    category: 'academics'
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const allEvents = [
     description: 'Three-day festival featuring jazz performances from students and faculty.',
     date: 'June 15-17, 2023',
     venue: 'Conservatory Courtyard',
-    department: 'conservatory'
+    category: 'conservatory'
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const allEvents = [
     description: 'Distinguished faculty members share research and insights.',
     date: 'Every Wednesday, 4:30 PM',
     venue: 'King Building',
-    department: 'academics'
+    category: 'academics'
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const allEvents = [
     description: 'Showcasing work from senior studio art majors.',
     date: 'May 5-20, 2023',
     venue: 'Allen Memorial Art Museum',
-    department: 'artsdept'
+    category: 'artsdept'
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const allEvents = [
     description: 'Oberlin Yeomen vs. Kenyon College',
     date: 'February 18, 2023, 7:00 PM',
     venue: 'Philips Gym',
-    department: 'athletics'
+    category: 'athletics'
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const allEvents = [
     description: 'Celebration of diversity with food, performances, and activities.',
     date: 'April 15, 2023',
     venue: 'Wilder Bowl',
-    department: 'studentlife'
+    category: 'studentlife'
   },
   {
     id: 8,
@@ -78,20 +78,29 @@ const allEvents = [
     description: 'Student-led production of "A Midsummer Night\'s Dream"',
     date: 'March 10-12, 2023',
     venue: 'Hall Auditorium',
-    department: 'artsdept'
+    category: 'artsdept'
   }
 ];
 
 export default function EventsPage() {
-  const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showAllEvents, setShowAllEvents] = useState(false);
   
-  // Filter events based on selected department
-  const filteredEvents = selectedDepartment === 'all' 
+  // Filter events based on selected category
+  const filteredEvents = selectedCategory === 'all' 
     ? allEvents 
-    : allEvents.filter(event => event.department === selectedDepartment);
+    : allEvents.filter(event => event.category === selectedCategory);
 
-  // Get the current department name for display
-  const currentDepartmentName = departments.find(dept => dept.id === selectedDepartment)?.name || 'All Departments';
+  // Get the current category name for display
+  const currentCategoryName = categories.find(cat => cat.id === selectedCategory)?.name || 'All Categories';
+  
+  // Toggle between showing limited events and all events
+  const displayedEvents = showAllEvents ? filteredEvents : filteredEvents.slice(0, 3);
+  
+  // Handle "View All Events" button click
+  const handleViewAllEvents = () => {
+    setShowAllEvents(!showAllEvents);
+  };
   
   return (
     <div className="space-y-8">
@@ -102,7 +111,7 @@ export default function EventsPage() {
         </p>
       </header>
       
-      {/* Department Filter */}
+      {/* Category Filter */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
@@ -112,17 +121,20 @@ export default function EventsPage() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full sm:w-1/2">
-            <label htmlFor="department-filter" className="block text-sm font-medium text-gray-700 mb-1">
-              Department
+            <label htmlFor="category-filter" className="block text-sm font-medium text-gray-700 mb-1">
+              Category
             </label>
             <select
-              id="department-filter"
-              value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
+              id="category-filter"
+              value={selectedCategory}
+              onChange={(e) => {
+                setSelectedCategory(e.target.value);
+                setShowAllEvents(false); // Reset to showing limited events on category change
+              }}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
             >
-              {departments.map(dept => (
-                <option key={dept.id} value={dept.id}>{dept.name}</option>
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
               ))}
             </select>
           </div>
@@ -135,15 +147,15 @@ export default function EventsPage() {
           <div className="flex items-center">
             <FaCalendarAlt className="text-red-700 mr-3 h-6 w-6" />
             <h2 className="text-2xl font-semibold text-gray-800">
-              {selectedDepartment === 'all' ? 'All Upcoming Events' : `${currentDepartmentName} Events`}
+              {selectedCategory === 'all' ? 'All Upcoming Events' : `${currentCategoryName} Events`}
             </h2>
           </div>
-          {selectedDepartment !== 'all' && (
+          {selectedCategory !== 'all' && (
             <button 
-              onClick={() => setSelectedDepartment('all')}
+              onClick={() => setSelectedCategory('all')}
               className="text-red-700 hover:underline text-sm font-medium"
             >
-              View All Departments
+              View All Categories
             </button>
           )}
         </div>
@@ -151,7 +163,7 @@ export default function EventsPage() {
         <div className="space-y-4">
           {filteredEvents.length > 0 ? (
             <>
-              {filteredEvents.map(event => (
+              {displayedEvents.map(event => (
                 <div key={event.id} className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
                   <div className="flex justify-between items-start">
                     <div>
@@ -175,13 +187,16 @@ export default function EventsPage() {
                 </div>
               ))}
             
-              <Link href="#" className="block text-center bg-red-700 text-white py-2 rounded hover:bg-red-800 transition-colors font-medium">
-                View All Events
-              </Link>
+              <button 
+                onClick={handleViewAllEvents}
+                className="block text-center bg-red-700 text-white py-2 rounded hover:bg-red-800 transition-colors font-medium w-full"
+              >
+                {showAllEvents ? 'Show Less' : `View All ${filteredEvents.length} Events`}
+              </button>
             </>
           ) : (
             <div className="text-center py-8">
-              <p className="text-gray-600">No events found for this department. Try selecting a different department.</p>
+              <p className="text-gray-600">No events found for this category. Try selecting a different category.</p>
             </div>
           )}
         </div>
