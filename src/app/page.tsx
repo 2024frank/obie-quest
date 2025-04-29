@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { FaGraduationCap, FaCalendarAlt, FaUsers } from 'react-icons/fa';
+import { FaGraduationCap, FaCalendarAlt, FaUsers, FaCheckSquare } from 'react-icons/fa';
 
 export default function Home() {
   const router = useRouter();
@@ -67,6 +67,19 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-2 text-gray-800">Student Organizations</h2>
           <p className="text-gray-800 text-center font-medium">
             Explore clubs, cultural groups, and organizations across campus
+          </p>
+        </Link>
+
+        <Link 
+          href="/checklist" 
+          className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+        >
+          <div className="h-14 w-14 bg-red-100 text-red-700 rounded-full flex items-center justify-center mb-4">
+            <FaCheckSquare className="h-6 w-6" />
+          </div>
+          <h2 className="text-xl font-semibold mb-2 text-gray-800">My Oberlin Checklist</h2>
+          <p className="text-gray-800 text-center font-medium">
+            Create and track your personalized Oberlin experiences
           </p>
         </Link>
       </section>
