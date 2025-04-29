@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaCheckSquare, FaPlus, FaLightbulb } from 'react-icons/fa';
+import { FaCheckSquare, FaPlus } from 'react-icons/fa';
 import { 
   useChecklistStore, 
   ChecklistItem as ChecklistItemType, 
@@ -14,7 +14,6 @@ import ChecklistFilters from '@/components/checklist/ChecklistFilters';
 export default function ChecklistPage() {
   const { items, addItem } = useChecklistStore();
   const [filteredItems, setFilteredItems] = useState<ChecklistItemType[]>([]);
-  const [recommendedItems, setRecommendedItems] = useState<ChecklistItemType[]>([]);
   const [userItems, setUserItems] = useState<ChecklistItemType[]>([]);
   const [progress, setProgress] = useState({ completed: 0, total: 0 });
   const [showAddModal, setShowAddModal] = useState(false);
@@ -25,25 +24,15 @@ export default function ChecklistPage() {
     yearLevel: 'freshman' as YearLevel
   });
   
-  // Initialize filtered items with all items
+  // Initialize filtered items with user-added items only
   useEffect(() => {
-    console.log("All items:", items);
-    console.log("Items with isRecommended=true:", items.filter(item => item.isRecommended));
-    console.log("Items with isRecommended=undefined or false:", items.filter(item => !item.isRecommended));
-    
-    setFilteredItems(items);
-    
-    // Separate recommended from user-added items
-    const recommended = items.filter(item => item.isRecommended === true);
+    // Filter out recommended items, only show user-created ones
     const userAdded = items.filter(item => item.isRecommended !== true);
     
-    console.log("Recommended items count:", recommended.length);
-    console.log("User-added items count:", userAdded.length);
-    
-    setRecommendedItems(recommended);
+    setFilteredItems(userAdded);
     setUserItems(userAdded);
     
-    updateProgress(items);
+    updateProgress(userAdded);
   }, [items]);
   
   // Calculate progress
@@ -62,7 +51,8 @@ export default function ChecklistPage() {
     completed: boolean | null;
     isRecommended: boolean | null;
   }) => {
-    let filtered = items;
+    // Start with only user-added items
+    let filtered = items.filter(item => item.isRecommended !== true);
     
     if (filters.categories.length > 0) {
       filtered = filtered.filter(item => filters.categories.includes(item.category));
@@ -76,19 +66,8 @@ export default function ChecklistPage() {
       filtered = filtered.filter(item => item.completed === filters.completed);
     }
     
-    if (filters.isRecommended !== null) {
-      filtered = filtered.filter(item => (item.isRecommended === filters.isRecommended));
-    }
-    
     setFilteredItems(filtered);
-    
-    // Also update the separated lists
-    const recommended = filtered.filter(item => item.isRecommended === true);
-    const userAdded = filtered.filter(item => item.isRecommended !== true);
-    
-    setRecommendedItems(recommended);
-    setUserItems(userAdded);
-    
+    setUserItems(filtered);
     updateProgress(filtered);
   };
   
@@ -119,8 +98,8 @@ export default function ChecklistPage() {
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">My Oberlin Checklist</h1>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-          Track your personalized 4-year Oberlin College experience with this checklist.
-          Add your own items or complete the recommended experiences!
+          Create and track your personalized Oberlin College experience with this customizable checklist.
+          Add activities, events, and goals you want to accomplish during your time at Oberlin.
         </p>
       </header>
       
@@ -165,29 +144,11 @@ export default function ChecklistPage() {
       {/* Filters */}
       <ChecklistFilters onFilterChange={handleFilterChange} />
       
-      {/* Recommended Checklist Items */}
-      {recommendedItems.length > 0 && (
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-            <FaLightbulb className="text-yellow-500 mr-2" />
-            <span>Recommended Oberlin Experiences</span>
-            <span className="ml-2 bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-sm">
-              {recommendedItems.length}
-            </span>
-          </h2>
-          <div className="space-y-3">
-            {recommendedItems.map(item => (
-              <ChecklistItem key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
-      )}
-      
       {/* My Checklist Items */}
       {userItems.length > 0 && (
         <section className="space-y-4 mt-8">
           <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-            <span>My Added Activities</span>
+            <span>My Activities</span>
             <span className="ml-2 bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-sm">
               {userItems.length}
             </span>
@@ -206,7 +167,9 @@ export default function ChecklistPage() {
           <FaCheckSquare className="mx-auto text-gray-400 text-5xl mb-4" />
           <h3 className="text-xl font-medium text-gray-800 mb-2">No items found</h3>
           <p className="text-gray-700 mb-4">
-            No items match your current filters. Try adjusting your filters or add a new item.
+            {userItems.length === 0 
+              ? "You haven't added any items to your checklist yet. Start by adding an activity you want to accomplish." 
+              : "No items match your current filters. Try adjusting your filters or add a new item."}
           </p>
           <button
             onClick={() => setShowAddModal(true)}
@@ -234,9 +197,10 @@ export default function ChecklistPage() {
                   id="title"
                   value={newItem.title}
                   onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
-                  placeholder=""
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  placeholder="e.g., Visit Tappan Square"
                   required
+                  autoFocus
                 />
               </div>
               
@@ -248,13 +212,13 @@ export default function ChecklistPage() {
                   id="description"
                   value={newItem.description}
                   onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
-                  placeholder=""
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  placeholder="e.g., Walk around the historic Tappan Square and take photos with the Oberlin rocks"
                   rows={3}
                 />
               </div>
               
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div>
                   <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
                     Category
@@ -263,7 +227,7 @@ export default function ChecklistPage() {
                     id="category"
                     value={newItem.category}
                     onChange={(e) => setNewItem({ ...newItem, category: e.target.value as ChecklistCategory })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
                   >
                     <option value="academic">Academic</option>
                     <option value="social">Social</option>
@@ -275,13 +239,13 @@ export default function ChecklistPage() {
                 
                 <div>
                   <label htmlFor="yearLevel" className="block text-sm font-medium text-gray-700 mb-1">
-                    Year
+                    Year Level
                   </label>
                   <select
                     id="yearLevel"
                     value={newItem.yearLevel}
                     onChange={(e) => setNewItem({ ...newItem, yearLevel: e.target.value as YearLevel })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-800"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
                   >
                     <option value="freshman">Freshman</option>
                     <option value="sophomore">Sophomore</option>
@@ -295,13 +259,13 @@ export default function ChecklistPage() {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-red-700 text-white rounded-md hover:bg-red-800 transition-colors"
+                  className="px-4 py-2 bg-red-700 border border-transparent rounded-md text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                 >
                   Add Item
                 </button>
