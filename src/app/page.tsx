@@ -26,12 +26,6 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Welcome to ObieQuest</h1>
           <p className="text-xl mb-6">Your personalized guide to Oberlin College</p>
-          <Link 
-            href="/checklist" 
-            className="inline-block bg-white text-red-700 px-6 py-3 rounded-full font-medium transition-colors hover:bg-gray-100"
-          >
-            Start Your Journey
-          </Link>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaUsers, FaGraduationCap, FaRunning, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
+import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaGraduationCap, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
 
 // Define our categories and their associated events
@@ -85,6 +85,7 @@ const allEvents = [
 export default function EventsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAllEvents, setShowAllEvents] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   
   // Filter events based on selected category
   const filteredEvents = selectedCategory === 'all' 
@@ -104,6 +105,21 @@ export default function EventsPage() {
   
   return (
     <div className="space-y-8">
+      {/* Under Construction Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full text-center">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Under Construction</h3>
+            <p className="text-gray-700 mb-6">This feature is coming soon. Please check back later!</p>
+            <button
+              className="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-medium"
+              onClick={() => setShowPopup(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       <header className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Campus Events</h1>
         <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
@@ -175,10 +191,10 @@ export default function EventsPage() {
                       </div>
                     </div>
                     <div className="flex space-x-2">
-                      <button className="text-red-700 hover:text-red-800">
+                      <button className="text-red-700 hover:text-red-800" onClick={() => setShowPopup(true)}>
                         <FaCalendarPlus className="h-5 w-5" title="Add to calendar" />
                       </button>
-                      <button className="text-red-700 hover:text-red-800">
+                      <button className="text-red-700 hover:text-red-800" onClick={() => setShowPopup(true)}>
                         <FaShare className="h-5 w-5" title="Share event" />
                       </button>
                     </div>
@@ -310,66 +326,6 @@ export default function EventsPage() {
         </div>
       </section>
       
-      {/* Student Organizations */}
-      <section className="bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center">
-            <FaUsers className="text-red-700 mr-3 h-6 w-6" />
-            <h2 className="text-2xl font-semibold text-gray-800">Student Organizations</h2>
-          </div>
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://www.oberlin.edu/life-at-oberlin/clubs-organizations"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-700 hover:underline font-medium flex items-center"
-            >
-              <span>Official Directory</span>
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-              </svg>
-            </a>
-            <Link href="/organizations" className="text-red-700 hover:underline font-medium">
-              View Complete List
-            </Link>
-          </div>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Cultural Organizations</h3>
-            <p className="text-gray-700 mb-2">Groups celebrating diverse cultures and traditions through events and activities.</p>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Examples:</strong> Asian American Alliance, La Alianza Latinx, African Students Association</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Activism & Service</h3>
-            <p className="text-gray-700 mb-2">Organizations focused on social justice, community service, and political action.</p>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Examples:</strong> Oberlin Student Progressive Alliance, Environmental Action</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Performing Arts Groups</h3>
-            <p className="text-gray-700 mb-2">Student-led music, dance, and theater groups that host regular performances.</p>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Examples:</strong> OSteel, Oberlin College Choir, OCircus</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Recreational & Special Interest</h3>
-            <p className="text-gray-700 mb-2">Clubs based on hobbies, interests, and recreational activities.</p>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Examples:</strong> Gaming Club, Anime Club, Chess Club</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Lectures & Academic Events */}
       <section className="bg-white p-6 rounded-lg shadow-md">
         <div className="flex items-center mb-4">
@@ -418,57 +374,6 @@ export default function EventsPage() {
         </div>
       </section>
       
-      {/* Athletics & Recreation */}
-      <section className="bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center mb-4">
-          <FaRunning className="text-red-700 mr-3 h-6 w-6" />
-          <h2 className="text-2xl font-semibold text-gray-800">Athletics & Recreation</h2>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Varsity Athletic Events</h3>
-            <p className="text-gray-700 mb-2">Home games and matches for Oberlin&apos;s NCAA Division III teams.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Teams:</strong> Football, Basketball, Soccer, Swimming & Diving, and more</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Philips Gym, Bailey Field, others</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Club Sports Competitions</h3>
-            <p className="text-gray-700 mb-2">Events featuring Oberlin&apos;s club sports teams competing against other colleges.</p>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Teams:</strong> Ultimate Frisbee, Rugby, Fencing, and more</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Intramural Sports</h3>
-            <p className="text-gray-700 mb-2">Casual sports leagues for students to join and compete within Oberlin.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Offerings:</strong> Basketball, Soccer, Volleyball, and more</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">How to Join:</strong> Sign up through Recreational Sports office</p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Fitness Classes</h3>
-            <p className="text-gray-700 mb-2">Group fitness activities open to all students.</p>
-            <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Classes:</strong> Yoga, Zumba, Cycling, and more</p>
-            </div>
-            <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Philips Gym, Wellness Center</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Calendar Subscription */}
       <section className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800">Stay Updated</h2>
@@ -478,10 +383,10 @@ export default function EventsPage() {
             get the latest updates on campus events.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors">
+            <button className="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors" onClick={() => setShowPopup(true)}>
               Subscribe to Calendar
             </button>
-            <button className="border border-red-700 text-red-700 px-4 py-2 rounded-md hover:bg-red-50 transition-colors">
+            <button className="border border-red-700 text-red-700 px-4 py-2 rounded-md hover:bg-red-50 transition-colors" onClick={() => setShowPopup(true)}>
               Download Mobile App
             </button>
           </div>

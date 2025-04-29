@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { deleteCookie } from 'cookies-next';
-import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaUtensils, FaCalendarAlt, FaUsers, FaCheckSquare, FaChevronDown } from 'react-icons/fa';
+import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaCalendarAlt, FaUsers, FaChevronDown } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -138,15 +138,6 @@ export default function Navbar() {
                       Academic Resources
                     </Link>
                     <Link 
-                      href="/dining" 
-                      className="flex items-center px-4 py-3 text-base text-gray-800 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDesktopDropdownOpen(false)}
-                      role="menuitem"
-                    >
-                      <FaUtensils className="mr-2 text-red-700 text-lg" aria-hidden="true" />
-                      Dining Options
-                    </Link>
-                    <Link 
                       href="/events" 
                       className="flex items-center px-4 py-3 text-base text-gray-800 hover:bg-gray-100 hover:text-gray-900"
                       onClick={() => setIsDesktopDropdownOpen(false)}
@@ -163,15 +154,6 @@ export default function Navbar() {
                     >
                       <FaUsers className="mr-2 text-red-700 text-lg" aria-hidden="true" />
                       Student Organizations
-                    </Link>
-                    <Link 
-                      href="/checklist" 
-                      className="flex items-center px-4 py-3 text-base text-gray-800 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDesktopDropdownOpen(false)}
-                      role="menuitem"
-                    >
-                      <FaCheckSquare className="mr-2 text-red-700 text-lg" aria-hidden="true" />
-                      My Checklist
                     </Link>
                   </div>
                 </div>
@@ -272,14 +254,6 @@ export default function Navbar() {
               Academic Resources
             </Link>
             <Link 
-              href="/dining" 
-              className="flex items-center px-4 py-3 rounded-md text-white hover:bg-red-900 transition-colors text-lg"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FaUtensils className="mr-3 text-xl" aria-hidden="true" />
-              Dining Options
-            </Link>
-            <Link 
               href="/events" 
               className="flex items-center px-4 py-3 rounded-md text-white hover:bg-red-900 transition-colors text-lg"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -294,14 +268,6 @@ export default function Navbar() {
             >
               <FaUsers className="mr-3 text-xl" aria-hidden="true" />
               Student Organizations
-            </Link>
-            <Link 
-              href="/checklist" 
-              className="flex items-center px-4 py-3 rounded-md text-white hover:bg-red-900 transition-colors text-lg"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FaCheckSquare className="mr-3 text-xl" aria-hidden="true" />
-              My Checklist
             </Link>
           </div>
         </div>

@@ -57,6 +57,10 @@ p, li, a, label, input, button, select, textarea {
 }
 
 /* Ensure proper heading hierarchy and sizes */
+h1, h2, h3, h4, h5, h6 {
+  text-decoration: none !important;
+}
+
 h1 {
   font-size: 2.2rem;
   line-height: 1.2;
