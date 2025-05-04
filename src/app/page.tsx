@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { FaGraduationCap, FaCalendarAlt, FaUsers, FaCheckSquare } from 'react-icons/fa';
+import { FaGraduationCap, FaCalendarAlt, FaMapMarkedAlt, FaCheckSquare } from 'react-icons/fa';
 
 export default function Home() {
   const router = useRouter();
@@ -26,11 +26,17 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Welcome to ObieQuest</h1>
           <p className="text-xl mb-6">Your personalized guide to Oberlin College</p>
+          <Link href="/checklist" className="inline-block bg-white text-red-700 px-8 py-3 rounded-lg shadow hover:bg-gray-50 transition duration-300">
+            <div className="flex items-center">
+              <FaCheckSquare className="text-xl mr-2" />
+              <span className="font-semibold">Start Your Journey</span>
+            </div>
+          </Link>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Link 
           href="/academic" 
           className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
@@ -62,24 +68,11 @@ export default function Home() {
           className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
         >
           <div className="h-14 w-14 bg-red-100 text-red-700 rounded-full flex items-center justify-center mb-4">
-            <FaUsers className="h-6 w-6" />
+            <FaMapMarkedAlt className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2 text-gray-800">Student Organizations</h2>
           <p className="text-gray-800 text-center font-medium">
             Explore clubs, cultural groups, and organizations across campus
-          </p>
-        </Link>
-
-        <Link 
-          href="/checklist" 
-          className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
-        >
-          <div className="h-14 w-14 bg-red-100 text-red-700 rounded-full flex items-center justify-center mb-4">
-            <FaCheckSquare className="h-6 w-6" />
-          </div>
-          <h2 className="text-xl font-semibold mb-2 text-gray-800">My Oberlin Checklist</h2>
-          <p className="text-gray-800 text-center font-medium">
-            Create and track your personalized Oberlin experiences
           </p>
         </Link>
       </section>

@@ -30,6 +30,7 @@ interface ChecklistState {
     yearLevels?: YearLevel[],
     completed?: boolean
   }) => ChecklistItem[];
+  resetUserItems: () => void;
 }
 
 export const useChecklistStore = create<ChecklistState>()(
@@ -98,7 +99,19 @@ export const useChecklistStore = create<ChecklistState>()(
         }
         
         return items;
-      }
+      },
+      
+      resetUserItems: () => set((state) => {
+        const recommendedItems = state.items.filter(item => item.isRecommended === true);
+        
+        const resetItems = recommendedItems.map(item => ({
+          ...item,
+          completed: false,
+          dateCompleted: undefined
+        }));
+        
+        return { items: resetItems };
+      })
     }),
     {
       name: 'oberlin-checklist-storage',
@@ -110,12 +123,9 @@ export const useChecklistStore = create<ChecklistState>()(
           }
           
           if (newState && newState.items) {
-            // Ensure isRecommended is set properly on all items
-            // Fix any items loaded from storage that might be missing the flag
             setTimeout(() => {
               const store = useChecklistStore.getState();
               const updatedItems = store.items.map(item => {
-                // If isRecommended is undefined, set it to true for default items
                 if (item.isRecommended === undefined) {
                   return { ...item, isRecommended: true };
                 }

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { deleteCookie } from 'cookies-next';
 import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaCalendarAlt, FaUsers, FaChevronDown } from 'react-icons/fa';
+import { useChecklistStore } from '@/stores/useChecklistStore';
 
 export default function Navbar() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const resetUserItems = useChecklistStore(state => state.resetUserItems);
 
   useEffect(() => {
     setIsClient(true);
@@ -58,6 +60,9 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = () => {
+    // Reset user checklist items
+    resetUserItems();
+    
     // Remove from localStorage
     localStorage.removeItem('isSignedIn');
     localStorage.removeItem('isGuest');
@@ -74,9 +79,6 @@ export default function Navbar() {
     deleteCookie('userYear');
     deleteCookie('userMajor');
     deleteCookie('userName');
-    
-    // Clear all localStorage completely (alternative approach)
-    // localStorage.clear();
     
     // Update state and redirect
     setIsSignedIn(false);
