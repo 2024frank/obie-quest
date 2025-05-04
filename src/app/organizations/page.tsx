@@ -402,7 +402,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">WRCS (Web Radio Communications at Oberlin)</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">WRCS (Web Radio Communications at Oberlin)</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('WRCS', 'Internet radio station featuring podcast-style programming and music.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Internet radio station featuring podcast-style programming and music.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Studio:</strong> TIMARA department</p>
@@ -413,7 +416,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">The Grape</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">The Grape</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('The Grape', 'Alternative student publication focused on arts, culture, and campus life.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Alternative student publication focused on arts, culture, and campus life.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Publication:</strong> Bi-weekly</p>
@@ -424,7 +430,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Plum Creek Review</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Plum Creek Review</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Plum Creek Review', 'Literary magazine publishing student poetry, prose, and visual art.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Literary magazine publishing student poetry, prose, and visual art.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Submissions:</strong> Twice per academic year</p>
@@ -445,7 +454,10 @@ export default function OrganizationsPage() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Board Game Club</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Board Game Club</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Board Game Club', 'Weekly gatherings to play board games, card games, and tabletop RPGs.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Weekly gatherings to play board games, card games, and tabletop RPGs.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Meetings:</strong> Saturdays, 7:00 PM</p>
@@ -456,7 +468,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Chess Club</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Chess Club</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Chess Club', 'Group for chess enthusiasts of all skill levels to play and improve.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Group for chess enthusiasts of all skill levels to play and improve.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Meetings:</strong> Tuesdays, 7:00 PM</p>
@@ -467,7 +482,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Cycling Club</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Cycling Club</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Cycling Club', 'Group rides, bike maintenance workshops, and cycling advocacy.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Group rides, bike maintenance workshops, and cycling advocacy.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Rides:</strong> Weekends, weather permitting</p>
@@ -478,7 +496,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Pottery Co-op</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Pottery Co-op</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Pottery Co-op', 'Student-run ceramics studio offering classes and open studio time.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Student-run ceramics studio offering classes and open studio time.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Open Hours:</strong> Daily, 10:00 AM - 10:00 PM</p>
@@ -489,7 +510,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Adventure Club</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Adventure Club</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Adventure Club', 'Group organizing hikes, camping trips, and other outdoor activities.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Group organizing hikes, camping trips, and other outdoor activities.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Meetings:</strong> Bi-weekly, Thursdays at 8:00 PM</p>
@@ -500,7 +524,10 @@ export default function OrganizationsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Oberlin Debate Team</h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-xl text-gray-800">Oberlin Debate Team</h3>
+              <button className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-700" title="Add to Checklist" onClick={() => openModal('Oberlin Debate Team', 'Competitive debate team participating in tournaments across the region.')}> <FaPlus /> </button>
+            </div>
             <p className="text-gray-600 mb-2">Competitive debate team participating in tournaments across the region.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Practices:</strong> Mon/Wed, 7:00-9:00 PM</p>
