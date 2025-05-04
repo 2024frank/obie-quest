@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaGraduationCap, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
+import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaGraduationCap, FaCalendarPlus, FaShare, FaFilter, FaPlus } from 'react-icons/fa';
+import { useChecklistStore, ChecklistCategory } from '@/stores/useChecklistStore';
 
 // Define our categories and their associated events
 const categories = [
@@ -85,6 +86,8 @@ export default function EventsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAllEvents, setShowAllEvents] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('This feature is coming soon. Please check back later!');
+  const addItem = useChecklistStore(state => state.addItem);
   
   // Filter events based on selected category
   const filteredEvents = selectedCategory === 'all' 
@@ -102,14 +105,43 @@ export default function EventsPage() {
     setShowAllEvents(!showAllEvents);
   };
   
+  // Function to add an event to checklist
+  const addToChecklist = (title: string, description: string, category: string) => {
+    // Convert event category to checklist category
+    const categoryMap: Record<string, ChecklistCategory> = {
+      'conservatory': 'social',
+      'artsdept': 'social',
+      'academics': 'academic',
+      'athletics': 'campus',
+      'studentlife': 'social'
+    };
+    
+    addItem({
+      title: `Attend ${title}`,
+      description: description,
+      category: categoryMap[category] || 'social',
+      yearLevel: 'freshman', // Default to freshman for simplicity
+    });
+    
+    setPopupMessage('Added to your checklist!');
+    setShowPopup(true);
+    
+    // Reset popup message after a delay
+    setTimeout(() => {
+      setPopupMessage('This feature is coming soon. Please check back later!');
+    }, 2000);
+  };
+  
   return (
     <div className="space-y-8">
       {/* Under Construction Modal */}
       {showPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
           <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full text-center">
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Under Construction</h3>
-            <p className="text-gray-700 mb-6">This feature is coming soon. Please check back later!</p>
+            <h3 className="text-xl font-bold mb-4 text-gray-800">
+              {popupMessage === 'Added to your checklist!' ? 'Success!' : 'Under Construction'}
+            </h3>
+            <p className="text-gray-700 mb-6">{popupMessage}</p>
             <button
               className="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-medium"
               onClick={() => setShowPopup(false)}
@@ -196,6 +228,13 @@ export default function EventsPage() {
                       <button className="text-red-700 hover:text-red-800" onClick={() => setShowPopup(true)}>
                         <FaShare className="h-5 w-5" title="Share event" />
                       </button>
+                      <button 
+                        className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                        onClick={() => addToChecklist(event.title, event.description, event.category)}
+                        title="Add to checklist"
+                      >
+                        <FaPlus className="h-4 w-4" />
+                      </button>
                     </div>
                   </div>
                   <button 
@@ -231,7 +270,16 @@ export default function EventsPage() {
         
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Conservatory Concerts</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Conservatory Concerts</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Conservatory Concert", "Attend a performance by Oberlin Conservatory students and faculty", "conservatory")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Regular performances by Oberlin Conservatory students and faculty.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Warner Concert Hall, Kulas Recital Hall, Finney Chapel</p>
@@ -248,7 +296,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Artist Recital Series</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Artist Recital Series</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Artist Recital Series", "Attend a performance by world-renowned artists and ensembles", "conservatory")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">World-renowned artists and ensembles performing at Oberlin.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Finney Chapel</p>
@@ -265,7 +322,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Student Bands & Performances</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Student Bands & Performances</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Student Band Performance", "Attend a showcase featuring student musical groups", "studentlife")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Showcases of student musical groups from various genres.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Cat in the Cream, &apos;Sco, Dionysus Club</p>
@@ -276,7 +342,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Dance Performances</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Dance Performances</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Dance Performance", "Attend a dance showcase featuring students and visiting artists", "artsdept")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Showcases of choreography and dance by students and visiting artists.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Warner Center for the Performing Arts</p>
@@ -297,7 +372,16 @@ export default function EventsPage() {
         
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Theater Department Productions</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Theater Department Productions</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Theater Department Production", "Attend a student or faculty theater production", "artsdept")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Student and faculty productions throughout the academic year.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Hall Auditorium, Little Theater</p>
@@ -314,7 +398,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Student Theater Productions</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Student Theater Productions</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Student Theater Production", "Attend an independent production by a student theater group", "studentlife")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Independent productions by student theater groups.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Little Theater, Kander Theater</p>
@@ -325,7 +418,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Art Exhibitions</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Art Exhibitions</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Art Exhibition", "Visit an art exhibition at a campus gallery", "artsdept")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Rotating exhibitions at the Allen Memorial Art Museum and student galleries.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Allen Memorial Art Museum, Fisher Gallery</p>
@@ -336,7 +438,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Cinema Studies Screenings</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Cinema Studies Screenings</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Cinema Studies Screening", "Attend a film screening and discussion", "academics")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Regular film screenings, often followed by discussions.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Apollo Theatre, Adam Joseph Lewis Center</p>
@@ -363,7 +474,16 @@ export default function EventsPage() {
         
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Convocation Series</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Convocation Series</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Convocation Series", "Attend a talk by a distinguished speaker in the convocation series", "academics")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Distinguished speakers from various fields addressing the Oberlin community.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Finney Chapel</p>
@@ -374,7 +494,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Departmental Lectures</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Departmental Lectures</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Departmental Lecture", "Attend an academic lecture hosted by a department", "academics")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Guest speakers hosted by academic departments on specialized topics.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Varies by department</p>
@@ -385,7 +514,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Symposia & Conferences</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Symposia & Conferences</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Academic Symposium", "Attend an academic symposium or conference", "academics")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Multi-day events featuring presentations, discussions, and workshops.</p>
             <div className="bg-gray-50 p-3 rounded">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Examples:</strong> Environmental Studies Symposium, Digital Humanities Conference</p>
@@ -393,7 +531,16 @@ export default function EventsPage() {
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
-            <h3 className="font-medium text-xl mb-2 text-gray-800">Student Research Presentations</h3>
+            <div className="flex justify-between">
+              <h3 className="font-medium text-xl mb-2 text-gray-800">Student Research Presentations</h3>
+              <button 
+                className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
+                onClick={() => addToChecklist("Student Research Presentation", "Attend a showcase of student research projects", "academics")}
+                title="Add to checklist"
+              >
+                <FaPlus className="h-4 w-4" />
+              </button>
+            </div>
             <p className="text-gray-700 mb-2">Showcases of student research, including senior symposia and honors presentations.</p>
             <div className="bg-gray-50 p-3 rounded">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">When:</strong> Throughout academic year, with concentration in spring</p>
