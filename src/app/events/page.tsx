@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaGraduationCap, FaCalendarPlus, FaShare, FaFilter, FaPlus } from 'react-icons/fa';
-import { useChecklistStore, ChecklistCategory } from '@/stores/useChecklistStore';
+import { useChecklistStore, ChecklistCategory, YearLevel } from '@/stores/useChecklistStore';
 
 // Define our categories and their associated events
 const categories = [
@@ -87,6 +87,14 @@ export default function EventsPage() {
   const [showAllEvents, setShowAllEvents] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('This feature is coming soon. Please check back later!');
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editItem, setEditItem] = useState({
+    title: '',
+    description: '',
+    category: 'academic' as ChecklistCategory,
+    yearLevel: 'freshman' as YearLevel
+  });
+  
   const addItem = useChecklistStore(state => state.addItem);
   
   // Filter events based on selected category
@@ -105,8 +113,8 @@ export default function EventsPage() {
     setShowAllEvents(!showAllEvents);
   };
   
-  // Function to add an event to checklist
-  const addToChecklist = (title: string, description: string, category: string) => {
+  // Function to prepare edit modal for an event
+  const prepareAddToChecklist = (title: string, description: string, category: string) => {
     // Convert event category to checklist category
     const categoryMap: Record<string, ChecklistCategory> = {
       'conservatory': 'social',
@@ -116,13 +124,30 @@ export default function EventsPage() {
       'studentlife': 'social'
     };
     
-    addItem({
+    setEditItem({
       title: `Attend ${title}`,
       description: description,
       category: categoryMap[category] || 'social',
-      yearLevel: 'freshman', // Default to freshman for simplicity
+      yearLevel: 'freshman'
     });
     
+    setShowEditModal(true);
+  };
+  
+  // Function to add edited item to checklist
+  const handleAddEditedItem = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (editItem.title.trim() === '') return;
+    
+    addItem({
+      title: editItem.title,
+      description: editItem.description,
+      category: editItem.category,
+      yearLevel: editItem.yearLevel
+    });
+    
+    setShowEditModal(false);
     setPopupMessage('Added to your checklist!');
     setShowPopup(true);
     
@@ -148,6 +173,97 @@ export default function EventsPage() {
             >
               Close
             </button>
+          </div>
+        </div>
+      )}
+      
+      {/* Edit Checklist Item Modal */}
+      {showEditModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Checklist Item</h2>
+            
+            <form onSubmit={handleAddEditedItem}>
+              <div className="mb-4">
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                  Title*
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  value={editItem.title}
+                  onChange={(e) => setEditItem({ ...editItem, title: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  required
+                />
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                  Description
+                </label>
+                <textarea
+                  id="description"
+                  value={editItem.description}
+                  onChange={(e) => setEditItem({ ...editItem, description: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  rows={3}
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div>
+                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+                    Category
+                  </label>
+                  <select
+                    id="category"
+                    value={editItem.category}
+                    onChange={(e) => setEditItem({ ...editItem, category: e.target.value as ChecklistCategory })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  >
+                    <option value="academic">Academic</option>
+                    <option value="social">Social</option>
+                    <option value="career">Career</option>
+                    <option value="campus">Campus</option>
+                    <option value="downtown">Downtown</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="yearLevel" className="block text-sm font-medium text-gray-700 mb-1">
+                    Year
+                  </label>
+                  <select
+                    id="yearLevel"
+                    value={editItem.yearLevel}
+                    onChange={(e) => setEditItem({ ...editItem, yearLevel: e.target.value as YearLevel })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-900"
+                  >
+                    <option value="freshman">Freshman</option>
+                    <option value="sophomore">Sophomore</option>
+                    <option value="junior">Junior</option>
+                    <option value="senior">Senior</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div className="flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowEditModal(false)}
+                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-red-700 border border-transparent rounded-md text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                >
+                  Add Item
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
@@ -230,7 +346,7 @@ export default function EventsPage() {
                       </button>
                       <button 
                         className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                        onClick={() => addToChecklist(event.title, event.description, event.category)}
+                        onClick={() => prepareAddToChecklist(event.title, event.description, event.category)}
                         title="Add to checklist"
                       >
                         <FaPlus className="h-4 w-4" />
@@ -274,7 +390,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Conservatory Concerts</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Conservatory Concert", "Attend a performance by Oberlin Conservatory students and faculty", "conservatory")}
+                onClick={() => prepareAddToChecklist("Conservatory Concert", "Attend a performance by Oberlin Conservatory students and faculty", "conservatory")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -300,7 +416,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Artist Recital Series</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Artist Recital Series", "Attend a performance by world-renowned artists and ensembles", "conservatory")}
+                onClick={() => prepareAddToChecklist("Artist Recital Series", "Attend a performance by world-renowned artists and ensembles", "conservatory")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -326,7 +442,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Student Bands & Performances</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Student Band Performance", "Attend a showcase featuring student musical groups", "studentlife")}
+                onClick={() => prepareAddToChecklist("Student Band Performance", "Attend a showcase featuring student musical groups", "studentlife")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -346,7 +462,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Dance Performances</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Dance Performance", "Attend a dance showcase featuring students and visiting artists", "artsdept")}
+                onClick={() => prepareAddToChecklist("Dance Performance", "Attend a dance showcase featuring students and visiting artists", "artsdept")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -376,7 +492,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Theater Department Productions</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Theater Department Production", "Attend a student or faculty theater production", "artsdept")}
+                onClick={() => prepareAddToChecklist("Theater Department Production", "Attend a student or faculty theater production", "artsdept")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -402,7 +518,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Student Theater Productions</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Student Theater Production", "Attend an independent production by a student theater group", "studentlife")}
+                onClick={() => prepareAddToChecklist("Student Theater Production", "Attend an independent production by a student theater group", "studentlife")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -422,7 +538,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Art Exhibitions</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Art Exhibition", "Visit an art exhibition at a campus gallery", "artsdept")}
+                onClick={() => prepareAddToChecklist("Art Exhibition", "Visit an art exhibition at a campus gallery", "artsdept")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -442,7 +558,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Cinema Studies Screenings</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Cinema Studies Screening", "Attend a film screening and discussion", "academics")}
+                onClick={() => prepareAddToChecklist("Cinema Studies Screening", "Attend a film screening and discussion", "academics")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -478,7 +594,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Convocation Series</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Convocation Series", "Attend a talk by a distinguished speaker in the convocation series", "academics")}
+                onClick={() => prepareAddToChecklist("Convocation Series", "Attend a talk by a distinguished speaker in the convocation series", "academics")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -498,7 +614,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Departmental Lectures</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Departmental Lecture", "Attend an academic lecture hosted by a department", "academics")}
+                onClick={() => prepareAddToChecklist("Departmental Lecture", "Attend an academic lecture hosted by a department", "academics")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -518,7 +634,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Symposia & Conferences</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Academic Symposium", "Attend an academic symposium or conference", "academics")}
+                onClick={() => prepareAddToChecklist("Academic Symposium", "Attend an academic symposium or conference", "academics")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
@@ -535,7 +651,7 @@ export default function EventsPage() {
               <h3 className="font-medium text-xl mb-2 text-gray-800">Student Research Presentations</h3>
               <button 
                 className="bg-red-100 text-red-700 hover:bg-red-200 rounded-full p-1.5"
-                onClick={() => addToChecklist("Student Research Presentation", "Attend a showcase of student research projects", "academics")}
+                onClick={() => prepareAddToChecklist("Student Research Presentation", "Attend a showcase of student research projects", "academics")}
                 title="Add to checklist"
               >
                 <FaPlus className="h-4 w-4" />
