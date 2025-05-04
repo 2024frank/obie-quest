@@ -10,6 +10,7 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
 
   // Check if already signed in
@@ -68,7 +69,7 @@ export default function SignIn() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="pl-10 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                className="pl-12 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder=""
                 aria-required="true"
               />
@@ -91,7 +92,7 @@ export default function SignIn() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="pl-10 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                className="pl-12 w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder=""
                 aria-required="true"
               />
@@ -113,9 +114,13 @@ export default function SignIn() {
             </div>
 
             <div className="text-sm sm:text-base">
-              <a href="#" className="font-medium text-red-600 hover:text-red-500 underline">
+              <button
+                type="button"
+                className="font-medium text-red-600 hover:text-red-500 underline focus:outline-none"
+                onClick={() => setShowPopup(true)}
+              >
                 Forgot your password?
-              </a>
+              </button>
             </div>
           </div>
 
@@ -141,6 +146,21 @@ export default function SignIn() {
           </Link>
         </p>
       </div>
+
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full text-center">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Under Construction</h3>
+            <p className="text-gray-700 mb-6">Password reset functionality is coming soon. Please check back later!</p>
+            <button
+              className="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-medium"
+              onClick={() => setShowPopup(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -82,7 +82,7 @@ export default function Profile() {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900"
                 placeholder="John Doe"
               />
             </div>
@@ -102,7 +102,7 @@ export default function Profile() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900"
                 placeholder="student@oberlin.edu"
               />
             </div>
@@ -122,7 +122,7 @@ export default function Profile() {
                 type="text"
                 value={major}
                 onChange={(e) => setMajor(e.target.value)}
-                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900"
                 placeholder="Computer Science"
               />
             </div>

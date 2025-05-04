@@ -24,8 +24,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-red-700 text-white rounded-xl p-8 shadow-lg">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">Welcome to ObieQuest</h1>
-          <p className="text-xl mb-6">Your personalized guide to Oberlin College</p>
+          <h1 className="text-5xl font-bold mb-4 transition-transform transform hover:scale-105 hover:text-red-300">Welcome to ObieQuest</h1>
+          <p className="text-xl mb-6 italic">Your personalized guide to Oberlin College</p>
           <Link href="/checklist" className="inline-block bg-white text-red-700 px-8 py-3 rounded-lg shadow hover:bg-gray-50 transition duration-300">
             <div className="flex items-center">
               <FaCheckSquare className="text-xl mr-2" />
@@ -81,13 +81,11 @@ export default function Home() {
       <section className="bg-white p-8 rounded-xl shadow-md">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">About ObieQuest</h2>
         <p className="text-gray-700 mb-4">
-          ObieQuest is designed to help Oberlin College students discover and navigate campus resources, 
-          find great places to eat, stay connected with events, and track their college journey with 
-          a personalized checklist.
+          ObieQuest enhances the student experience by providing a comprehensive platform for students to manage their academic, extracurricular, and personal commitments. 
+          It allows students to create a personalized checklist encompassing academics, organizations, professional development, sports, and community events.
         </p>
         <p className="text-gray-700">
-          Whether you&apos;re a first-year student or a senior, ObieQuest will help you make the most of 
-          your time at Oberlin!
+          This tool helps students keep track of their goals, tasks, and responsibilities, ensuring they make the most of their time at Oberlin College.
         </p>
       </section>
     </div>
