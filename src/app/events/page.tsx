@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FaCalendarAlt, FaMusic, FaTheaterMasks, FaGraduationCap, FaCalendarPlus, FaShare, FaFilter } from 'react-icons/fa';
-import Link from 'next/link';
 
 // Define our categories and their associated events
 const categories = [
@@ -199,7 +198,12 @@ export default function EventsPage() {
                       </button>
                     </div>
                   </div>
-                  <Link href="#" className="text-red-700 hover:underline text-sm font-medium">View details</Link>
+                  <button 
+                    onClick={() => setShowPopup(true)}
+                    className="text-red-700 hover:underline text-sm font-medium bg-transparent border-0 cursor-pointer p-0"
+                  >
+                    View details
+                  </button>
                 </div>
               ))}
             
@@ -235,6 +239,12 @@ export default function EventsPage() {
             <div className="bg-gray-50 p-3 rounded">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Many performances are free; check the Conservatory calendar</p>
             </div>
+            <button 
+              onClick={() => setShowPopup(true)}
+              className="mt-2 text-red-700 hover:underline text-sm font-medium bg-transparent border-0 cursor-pointer p-0"
+            >
+              View details
+            </button>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
@@ -246,6 +256,12 @@ export default function EventsPage() {
             <div className="bg-gray-50 p-3 rounded">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Tickets available at Central Ticket Service</p>
             </div>
+            <button 
+              onClick={() => setShowPopup(true)}
+              className="mt-2 text-red-700 hover:underline text-sm font-medium bg-transparent border-0 cursor-pointer p-0"
+            >
+              View details
+            </button>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
@@ -282,13 +298,19 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-xl mb-2 text-gray-800">Theater Department Productions</h3>
-            <p className="text-gray-700 mb-2">Main stage productions by the Theater Department, featuring student actors and designers.</p>
+            <p className="text-gray-700 mb-2">Student and faculty productions throughout the academic year.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
               <p className="text-gray-900 font-medium"><strong className="text-red-700">Venues:</strong> Hall Auditorium, Little Theater</p>
             </div>
             <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Central Ticket Service</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Tickets available at Central Ticket Service</p>
             </div>
+            <button 
+              onClick={() => setShowPopup(true)}
+              className="mt-2 text-red-700 hover:underline text-sm font-medium bg-transparent border-0 cursor-pointer p-0"
+            >
+              View details
+            </button>
           </div>
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
@@ -315,13 +337,19 @@ export default function EventsPage() {
           
           <div className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
             <h3 className="font-medium text-xl mb-2 text-gray-800">Cinema Studies Screenings</h3>
-            <p className="text-gray-700 mb-2">Film screenings and discussions by the Cinema Studies program.</p>
+            <p className="text-gray-700 mb-2">Regular film screenings, often followed by discussions.</p>
             <div className="bg-gray-50 p-3 rounded mb-2">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Apollo Theatre, classroom venues</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Venue:</strong> Apollo Theatre, Adam Joseph Lewis Center</p>
             </div>
             <div className="bg-gray-50 p-3 rounded">
-              <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Many screenings are free</p>
+              <p className="text-gray-900 font-medium"><strong className="text-red-700">Ticket Info:</strong> Many screenings are free with OCID</p>
             </div>
+            <button 
+              onClick={() => setShowPopup(true)}
+              className="mt-2 text-red-700 hover:underline text-sm font-medium bg-transparent border-0 cursor-pointer p-0"
+            >
+              View details
+            </button>
           </div>
         </div>
       </section>
