@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { deleteCookie } from 'cookies-next';
-import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaCalendarAlt, FaUsers } from 'react-icons/fa';
+import { FaUserCircle, FaSignOutAlt, FaGraduationCap, FaCalendarAlt, FaUsers, FaCheckSquare } from 'react-icons/fa';
 import { useChecklistStore } from '@/stores/useChecklistStore';
 
 export default function Navbar() {
@@ -100,6 +100,10 @@ export default function Navbar() {
             </Link>
             {isClient && isSignedIn && (
               <div className="hidden md:flex items-center space-x-6">
+                <Link href="/checklist" className="flex items-center text-base font-medium hover:text-gray-300">
+                  <FaCheckSquare className="mr-2 text-lg" aria-hidden="true" />
+                  My Checklist
+                </Link>
                 <Link href="/academic" className="flex items-center text-base font-medium hover:text-gray-300">
                   <FaGraduationCap className="mr-2 text-lg" aria-hidden="true" />
                   Academic Resources
